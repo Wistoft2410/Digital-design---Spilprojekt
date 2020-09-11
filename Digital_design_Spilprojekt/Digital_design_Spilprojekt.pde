@@ -1,7 +1,7 @@
 Dino player;
 
 void setup() {
-  size(600,600);
+  size(600, 600);
   player = new Dino();
 }
 
