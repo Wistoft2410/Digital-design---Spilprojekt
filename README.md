@@ -10,7 +10,7 @@
   På den måde vil din commit handling blive lagt hen i den vedkommendes **Task/issue's** tråd!
   Hvis jeres commit ikke refererer til nogen **Task** så skal i selvfølgelig ikke gøre det.
 
-- Sørg for at **assign** jer selv til den **Task/issue** som i arbejder på, det er noget man kan på en issue ligesom man kan tilføje labels til en issue!
+- Sørg for at **assign** jer selv til den **Task/issue** som i arbejder på, det er noget man kan på en issue ligesom man kan tilføje **labels** til en issue!
 
 
 ### Alle links:
