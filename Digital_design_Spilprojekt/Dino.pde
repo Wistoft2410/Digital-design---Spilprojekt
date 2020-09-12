@@ -5,23 +5,26 @@ class Dino {
   PVector vel;
   PVector acc;
   float dinoSize;
-  boolean touchGround = false;
+  boolean touchGround;
+  float speed;
 
   Dino () {
-    gravity = new PVector (0, 5);
+    gravity = new PVector (0, height*0.000167);
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0);
-    dinoSize = 10;
+    dinoSize = (height + width)/50;
+    touchGround = false;
+    speed = dinoSize/8;
   }
 
-  void update () {
+  void update () {    
+    display();
     move();
     applyForce(gravity);
     vel.add(acc);
     loc.add(vel);
     acc.mult(0);
-    display();
     jorden();
   }
 
@@ -38,18 +41,19 @@ class Dino {
   }
 
   void applyForce( PVector force ) {
-    acc = force;
+    acc.add(force);
   }
 
   void move() {
     if ( keyCode == RIGHT && keyPressed ) {
-      loc.add(3, 0);
+      loc.add(speed, 0);
     }
     if ( keyCode == LEFT && keyPressed ) {
-      loc.sub(3, 0);
+      loc.sub(speed, 0);
     }
-    if ( keyCode == UP && keyPressed ) {
-      loc.sub(0,10);
+    if ( keyCode == UP && keyPressed && touchGround) {
+      touchGround = false;
+      vel.y -= height*0.013;
     }
   }
 }
