@@ -1,3 +1,4 @@
+ArrayList<Egg> egg = new ArrayList<Egg>();
 Dino player;
 
 void setup() {
