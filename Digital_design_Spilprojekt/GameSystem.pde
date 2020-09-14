@@ -15,13 +15,14 @@ class GameSystem {
   GameSystem() {
     this.eggs = new ArrayList<Egg>();
     this.meteorer = new ArrayList<Meteor>();
-    this.dino = new Dino(eggs);
+
+    this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 10);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
   }
 
   void update() {
-    dino.update();
+    dino.update(eggs);
     heart.display();
     timer.update();
 
@@ -31,11 +32,11 @@ class GameSystem {
 	eggs.remove(egg);
     }
 
-    for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
-      meteor.update();
-      if (meteor.loc.y > height) {
-        meteorer.remove(meteor);
-      }
-    }
+    //for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
+      //meteor.update();
+      //if (meteor.loc.y > height) {
+        //meteorer.remove(meteor);
+      //}
+    //}
   }
 }
