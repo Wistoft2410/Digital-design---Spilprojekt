@@ -31,8 +31,12 @@ class Timer {
   void display () {
     textAlign(CENTER);
     textSize(timerSize);
-    if ( deathMode ) { fill(200,0,0);  }
-    if ( !deathMode ) { fill(0,200,0);  }
+    if ( deathMode ) { 
+      fill(200, 0, 0);
+    }
+    if ( !deathMode ) { 
+      fill(0, 200, 0);
+    }
     text(sek, loc.x, loc.y);
   }
 

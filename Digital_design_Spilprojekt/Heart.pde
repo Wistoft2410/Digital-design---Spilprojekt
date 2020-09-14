@@ -19,8 +19,8 @@ class Heart {
 
 
   void display () {
-    for (int i = 0; i < liv; i++){
-      image(heart, loc.x + heartSize*i , loc.y, heartSize, heartSize);
+    for (int i = 0; i < liv; i++) {
+      image(heart, loc.x + heartSize*i, loc.y, heartSize, heartSize);
     }
   }
 }
