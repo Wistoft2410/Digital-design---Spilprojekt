@@ -1,3 +1,7 @@
+/*
+ GameSystem klassen indeholder alle spil objekter og holder styr på selve spil systemet
+ (point, liv)
+*/
 class GameSystem {
   Dino dino;
   Heart heart;

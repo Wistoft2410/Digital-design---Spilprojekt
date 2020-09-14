@@ -1,7 +1,6 @@
 class Dino {
   int liv;
 
-  PVector gravity;
   PVector loc;
   PVector vel;
   PVector acc;
@@ -16,10 +15,9 @@ class Dino {
     this.eggs = eggs;
 
     liv = 3;
-    gravity = new PVector (0, height*0.000167);
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
-    acc = new PVector(0, 0);
+    acc = new PVector(0, height*0.000167);
     dinoSize = (height + width)/50;
     touchGround = false;
     speed = dinoSize/8;
@@ -29,10 +27,8 @@ class Dino {
     collisionWithEggs();
     display();
     move();
-    applyForce(gravity);
     vel.add(acc);
     loc.add(vel);
-    acc.mult(0);
     jorden();
   }
 
@@ -43,7 +39,6 @@ class Dino {
   }
 
   void display () {
-
     fill(0);
     ellipse(loc.x, loc.y, dinoSize, dinoSize);
   }
@@ -53,10 +48,6 @@ class Dino {
       touchGround = true;
       loc.y = height - dinoSize/2;
     }
-  }
-
-  void applyForce( PVector force ) {
-    acc.add(force);
   }
 
   boolean isDead () {
