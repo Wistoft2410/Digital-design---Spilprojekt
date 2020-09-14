@@ -31,6 +31,7 @@ class Dino {
   void collisionWithEggs(ArrayList<Egg> eggs) {
     for (Egg egg : eggs) {
       if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
+        // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
 				gameSystem.incrementScore();
 			}
     }
