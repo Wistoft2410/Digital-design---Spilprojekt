@@ -1,6 +1,6 @@
 class Heart {
 
-  PImage heart = loadImage("Heart.png");
+  PImage heart = loadImage("..Ressources/Heart.png");
   int liv;
   PVector loc;
   float heartSize;
