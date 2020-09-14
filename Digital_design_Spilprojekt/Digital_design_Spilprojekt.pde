@@ -11,7 +11,7 @@ void draw() {
 }
 
 void mousePressed () {
-  gameSystem.meteor.add(new Meteor(mouseX,mouseY));
+  gameSystem.meteorer.add(new Meteor(mouseX,mouseY));
 }
 
 void keyPressed() {
