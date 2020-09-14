@@ -1,6 +1,8 @@
 class Dino {
 
+  Heart heart;
   Timer timer;
+  int liv = 3;
   PVector gravity;
   PVector loc;
   PVector vel;
@@ -10,7 +12,7 @@ class Dino {
   float speed;
 
   Dino () {
-    timer = new Timer(width/2,0, 10);
+    timer = new Timer(width/2, 0, 10);
     gravity = new PVector (0, height*0.000167);
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
@@ -18,6 +20,7 @@ class Dino {
     dinoSize = (height + width)/50;
     touchGround = false;
     speed = dinoSize/8;
+    heart = new Heart(0,0,dinoSize * 2,liv);
   }
 
   void update () {
@@ -32,6 +35,7 @@ class Dino {
   }
 
   void display () {
+    heart.display();
     fill(0);
     ellipse(loc.x, loc.y, dinoSize, dinoSize);
   }
@@ -46,6 +50,16 @@ class Dino {
   void applyForce( PVector force ) {
     acc.add(force);
   }
+
+  boolean isDead () {
+    if (liv <= 0) {
+      liv = 0;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   void move() {
     if ( keyCode == RIGHT && keyPressed ) {

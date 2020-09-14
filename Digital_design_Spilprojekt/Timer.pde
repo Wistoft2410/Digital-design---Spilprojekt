@@ -1,5 +1,6 @@
 class Timer {
 
+  int startSek;
   int sek;
   PVector loc;
   float timerSize;
@@ -9,6 +10,7 @@ class Timer {
   Timer () {
     timerSize = (width + height) * 0.1;
     loc = new PVector(0, 0);
+    startSek = 10;
     sek = 10;
     deathMode = false;
   }
@@ -16,6 +18,7 @@ class Timer {
   Timer (float loc_x, float loc_y, int a) { 
     timerSize = (width + height) * 0.1;
     loc = new PVector(loc_x, loc_y + timerSize);
+    startSek = a;
     sek = a;
     deathMode = false;
   }
@@ -41,11 +44,11 @@ class Timer {
     }
 
     if ( sek <= 0 && !deathMode ) {
-      sek = 10;
+      sek = startSek;
       deathMode = true;
     } 
     if (sek <= 0 && deathMode) {
-      sek = 10;
+      sek = startSek;
       deathMode = false;
     }
   }
