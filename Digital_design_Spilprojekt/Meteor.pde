@@ -1,6 +1,6 @@
 class Meteor {
 
-  PImage muneb = loadImage("..Ressources/Meteor_2png.png");
+  PImage muneb = loadImage("../Ressources/Meteor.png");
   PVector gravity;
   PVector loc;
   PVector vel;
