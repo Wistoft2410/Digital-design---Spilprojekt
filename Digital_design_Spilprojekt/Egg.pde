@@ -20,7 +20,7 @@ class Egg {
 
   Egg (float loc_x, float loc_y) {
     eggSizeX = width/50;
-    eggSizeY = height/30;
+    eggSizeY = height/40;
     touchGround = false;
     gravity = new PVector (0, height*0.000167);
     loc = new PVector(loc_x, loc_y);

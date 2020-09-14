@@ -12,7 +12,7 @@ void draw() {
 }
 
 void mousePressed () {
-  gameSystem.egg.add(new Egg(mouseX,mouseY));
+  gameSystem.meteor.add(new Meteor(mouseX,mouseY));
 }
 
 void keyPressed() {
