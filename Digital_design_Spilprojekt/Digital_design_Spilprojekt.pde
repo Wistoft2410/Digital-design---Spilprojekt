@@ -12,11 +12,12 @@ void draw() {
 }
 
 void mousePressed () {
+  gameSystem.egg.add(new Egg(mouseX,mouseY));
 }
 
 void keyPressed() {
-  if (key == 'r') {
+  if (key == 'r' || key == 'R' ) {
     println("Reset");
-    frameCount =-1;
+    frameCount = -1;
   }
 }

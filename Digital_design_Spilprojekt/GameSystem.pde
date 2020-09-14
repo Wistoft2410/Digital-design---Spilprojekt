@@ -18,5 +18,11 @@ class GameSystem {
     dino.update();
     heart.display();
     timer.update();
+    for (int i = 0; i < egg.size(); i++) {
+      egg.get(i).update();
+      if (egg.get(i).loc.y > height) {
+        egg.remove(i);
+      }
+    }
   }
 }
