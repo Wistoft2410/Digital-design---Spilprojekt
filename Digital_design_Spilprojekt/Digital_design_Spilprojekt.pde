@@ -1,4 +1,3 @@
-
 GameSystem gameSystem;
 
 void setup() {
@@ -12,7 +11,7 @@ void draw() {
 }
 
 void mousePressed () {
-  gameSystem.egg.add(new Egg(mouseX,mouseY));
+  gameSystem.eggs.add(new Egg(mouseX,mouseY));
 }
 
 void keyPressed() {
