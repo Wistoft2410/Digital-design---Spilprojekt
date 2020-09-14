@@ -20,3 +20,10 @@ void draw() {
 void mousePressed () {
   player.heart.liv--;
 }
+
+void keyPressed() {
+  if (key == 'r') {
+    println("Reset");
+    frameCount =-1;
+  }
+}
