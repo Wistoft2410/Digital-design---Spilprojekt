@@ -26,7 +26,7 @@ class GameSystem {
         meteor.remove(i);
       }
     }
-    for (int i = 0; i < meteor.size(); i++) {
+    for (int i = 0; i < egg.size(); i++) {
       egg.get(i).update();
       if (egg.get(i).loc.y > height) {
         egg.remove(i);

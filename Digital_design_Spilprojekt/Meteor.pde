@@ -1,5 +1,6 @@
 class Meteor {
 
+  PImage muneb = loadImage("Muneb.png");
   PVector gravity;
   PVector loc;
   PVector vel;
@@ -8,7 +9,7 @@ class Meteor {
   float meteorSize;
 
   Meteor (float loc_x, float loc_y) {
-    meteorSize = width/50;
+    meteorSize = width/20;
     touchGround = false;
     gravity = new PVector (0, height*0.000167);
     loc = new PVector(loc_x, loc_y);
@@ -30,7 +31,7 @@ class Meteor {
 
   void display () {
     noStroke();
-    fill(200);
-    ellipse(loc.x, loc.y, meteorSize, meteorSize);
+    fill(220);
+    image(muneb,loc.x, loc.y, meteorSize, meteorSize);
   }
 }
