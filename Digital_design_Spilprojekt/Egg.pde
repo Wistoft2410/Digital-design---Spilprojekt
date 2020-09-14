@@ -1,3 +1,5 @@
+PImage img; 
+
 class Egg {
 
   PVector gravity;
@@ -8,6 +10,7 @@ class Egg {
   float eggSizeX;
   float eggSizeY;
 
+  //Deafult constructors
   Egg () {
     eggSizeX = width/50;
     eggSizeY = height/30;
@@ -41,8 +44,10 @@ class Egg {
   }
 
   void display () {
+    img = loadImage("Egg.png");
     noStroke();
     fill(255, 223, 0);
-    ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
+    image(img, loc.x, loc.y, eggSizeX, eggSizeY);
+    
   }
 }
