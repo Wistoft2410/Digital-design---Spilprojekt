@@ -34,6 +34,8 @@ class Dino {
   void display () {
 
     fill(0);
+    stroke(0);
+    strokeWeight(0);
     ellipse(loc.x, loc.y, dinoSize, dinoSize);
   }
 
