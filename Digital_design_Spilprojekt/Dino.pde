@@ -1,8 +1,7 @@
 class Dino {
 
   Heart heart;
-  Timer timer;
-  int liv = 3;
+  int liv;
   PVector gravity;
   PVector loc;
   PVector vel;
@@ -12,7 +11,7 @@ class Dino {
   float speed;
 
   Dino () {
-    timer = new Timer(width/2, 0, 10);
+    liv = 3;
     gravity = new PVector (0, height*0.000167);
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
@@ -24,7 +23,6 @@ class Dino {
   }
 
   void update () {
-    timer.update();
     display();
     move();
     applyForce(gravity);
