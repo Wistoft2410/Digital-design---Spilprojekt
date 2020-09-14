@@ -1,15 +1,15 @@
 class GameSystem {
-  
-  ArrayList<Egg> egg;
   Dino dino;
   Heart heart;
   Timer timer;
+  ArrayList<Egg> eggs;
 
   GameSystem() {
-    egg = new ArrayList<Egg>();
-    dino = new Dino();
-    timer = new Timer(width/2, 0, 10);
-    heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
+    this.eggs = new ArrayList<Egg>();
+    this.dino = new Dino(eggs);
+    this.timer = new Timer(width/2, 0, 10);
+    this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
+    
   }
 
 

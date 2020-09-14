@@ -1,16 +1,20 @@
 class Dino {
-
-
   int liv;
+
   PVector gravity;
   PVector loc;
   PVector vel;
   PVector acc;
+
+  ArrayList<Egg> eggs;
+
   float dinoSize;
   boolean touchGround;
   float speed;
 
-  Dino () {
+  Dino (ArrayList<Egg> eggs) {
+    this.eggs = eggs;
+
     liv = 3;
     gravity = new PVector (0, height*0.000167);
     loc = new PVector(width/2, height/2);
@@ -22,6 +26,7 @@ class Dino {
   }
 
   void update () {
+    collisionWithEggs();
     display();
     move();
     applyForce(gravity);
@@ -29,6 +34,12 @@ class Dino {
     loc.add(vel);
     acc.mult(0);
     jorden();
+  }
+
+  void collisionWithEggs() {
+    for (Egg egg : eggs) {
+      // Do something in here!
+    }
   }
 
   void display () {
