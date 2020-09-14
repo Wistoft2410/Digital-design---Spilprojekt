@@ -8,6 +8,7 @@ class GameSystem {
   Dino dino;
   Heart heart;
   Timer timer;
+	int score;
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
@@ -21,19 +22,23 @@ class GameSystem {
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
   }
 
+	void incrementScore() {
+		score++;
+	}
+
   void update() {
     dino.update(eggs);
     heart.display();
     timer.update();
 
     for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
-      egg.update();
+      egg.run();
       if (egg.loc.y > height) 
-	eggs.remove(egg);
-    }
+				eggs.remove(egg);
+    	}
 
     //for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
-      //meteor.update();
+      //meteor.run();
       //if (meteor.loc.y > height) {
         //meteorer.remove(meteor);
       //}

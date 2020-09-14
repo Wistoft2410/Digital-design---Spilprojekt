@@ -30,7 +30,9 @@ class Dino {
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
     for (Egg egg : eggs) {
-      if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 5) println("lool");
+      if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
+				gameSystem.incrementScore();
+			}
     }
   }
 

@@ -23,8 +23,12 @@ class Egg {
   void update () {
     vel.add(acc);
     loc.add(vel);
-    display();
   }
+
+	void run() {
+		update();
+		display();
+	}
 
   void display () {
     img = loadImage("../Ressources/Egg.png");
