@@ -1,3 +1,4 @@
+
 class Background {
   PVector vandloc;
   PVector soloc;
@@ -25,5 +26,6 @@ class Background {
     stroke(90, 188, 216);
     strokeWeight(30);
     bezier(vandloc.x, vandloc.y-15, 60, vandloc.y-30, 40, 500, vandloc.x+40, vandloc.y+140);
+
   }
 }
