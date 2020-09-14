@@ -5,6 +5,7 @@ Dino player;
 
 void setup() {
   size(800, 800);
+  frameRate(60);
   gameSystem = new GameSystem();
   player = new Dino();
   test = new Egg(100,100);
@@ -18,5 +19,5 @@ void draw() {
 }
 
 void mousePressed () {
-  player.heart.liv--;
+  //player.heart.liv--;
 }
