@@ -13,3 +13,10 @@ void draw() {
 
 void mousePressed () {
 }
+
+void keyPressed() {
+  if (key == 'r') {
+    println("Reset");
+    frameCount =-1;
+  }
+}
