@@ -27,6 +27,7 @@ class GameSystem {
 	}
 
   void update() {
+    
     dino.update(eggs);
     heart.display();
     timer.update();
