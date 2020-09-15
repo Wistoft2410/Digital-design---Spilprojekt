@@ -25,7 +25,10 @@ class Dino extends Default {
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
     for (Egg egg : eggs) {
-      if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
+      // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
+      // Vi må lige finde ud af hvordan det kan gøres bedre!
+      // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi swallowed boolean variable om vi har ramt eller ej!
+      if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < (egg.eggSizeX + egg.eggSizeY) / 2 && !egg.swallowed) {
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
         egg.swallow();
         gameSystem.incrementScore();
