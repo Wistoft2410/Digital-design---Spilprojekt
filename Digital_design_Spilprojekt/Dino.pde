@@ -5,15 +5,11 @@ class Dino {
   PVector vel;
   PVector acc;
 
-  ArrayList<Egg> eggs;
-
   float dinoSize;
   boolean touchGround;
   float speed;
 
-  Dino (ArrayList<Egg> eggs) {
-    this.eggs = eggs;
-
+  Dino () {
     liv = 3;
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
@@ -23,8 +19,8 @@ class Dino {
     speed = dinoSize/8;
   }
 
-  void update () {
-    collisionWithEggs();
+  void update (ArrayList<Egg> eggs) {
+    collisionWithEggs(eggs);
     display();
     move();
     vel.add(acc);
@@ -32,9 +28,12 @@ class Dino {
     jorden();
   }
 
-  void collisionWithEggs() {
+  void collisionWithEggs(ArrayList<Egg> eggs) {
     for (Egg egg : eggs) {
-      // Do something in here!
+      if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
+        // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
+				gameSystem.incrementScore();
+			}
     }
   }
 

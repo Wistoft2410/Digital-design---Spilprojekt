@@ -4,6 +4,7 @@ class Egg {
   PVector loc;
   PVector vel;
   PVector acc;
+	float lifespan;
 
   boolean touchGround;
 
@@ -23,11 +24,15 @@ class Egg {
   void update () {
     vel.add(acc);
     loc.add(vel);
-    display();
   }
 
+	void run() {
+		update();
+		display();
+	}
+
   void display () {
-    img = loadImage("..Ressources/Egg.png");
+    img = loadImage("../Ressources/Egg.png");
     noStroke();
     fill(255, 223, 0);
     image(img, loc.x, loc.y, eggSizeX, eggSizeY);
