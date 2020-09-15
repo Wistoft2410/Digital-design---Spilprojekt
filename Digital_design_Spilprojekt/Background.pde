@@ -10,12 +10,18 @@ class Background {
 
   void display() {
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
+
+   // println(frameRate);
+
+
     
     //planet med måne i omkreds
     fill(100);
     pushMatrix();
     translate(width-100, 50);
-    rotate(frameCount / 10);
+
+    rotate(frameCount*0.1);
+
     ellipse(0, 0, 30, 30);
     ellipse(20, 20, 10, 10);
     popMatrix();

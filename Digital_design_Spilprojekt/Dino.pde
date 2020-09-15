@@ -51,7 +51,11 @@ class Dino extends Default {
     stroke(0);
     strokeWeight(0);
     fill(0);
+
+    stroke(0);
+    strokeWeight(0);
     ellipse(loc.x, loc.y, scl, scl);
+
   }
 
   void update() {

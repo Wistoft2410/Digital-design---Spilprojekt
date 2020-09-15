@@ -38,6 +38,7 @@ class GameSystem {
 		textSize(24);
 		text("Score: " + score, width * 0.75, height * 0.0725);
 
+
     for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
       if (egg.loc.y > height) eggs.remove(egg);
       egg.run();
