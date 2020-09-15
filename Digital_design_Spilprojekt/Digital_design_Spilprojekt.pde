@@ -19,6 +19,8 @@ void draw() {
 void mousePressed () {
   //gameSystem.eggs.add(new Egg(mouseX,mouseY));
    gameSystem.eggs.add(new Egg(random(0,width), 0));
+
+   println(mouseX - width/2, mouseY- height/1.7);
   
    //gameSystem.meteorer.add(new Meteor(random(width), 0));
   //gameSystem.meteorer.add(new Meteor(mouseX,mouseY));
