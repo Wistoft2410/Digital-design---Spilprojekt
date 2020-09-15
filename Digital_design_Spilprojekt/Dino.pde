@@ -15,9 +15,9 @@ class Dino extends Default {
   }
 
   void update (ArrayList<Egg> eggs) {
-    
+
     funktion();
-    
+
     collisionWithEggs(eggs);
     display();
     move();
@@ -79,7 +79,7 @@ class Dino extends Default {
       vel.y -= height*0.009;
       //vel.y -= constrain(height*0.011,20,height*0.013);
       touchGround = false;
-     
+
     }
   }
 }
