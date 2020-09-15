@@ -2,7 +2,7 @@ class Dino extends Default {
   int liv;
 
   ArrayList<Egg> eggs;
-  
+
   PVector loc;
   PVector vel;
   PVector acc;
@@ -84,10 +84,10 @@ class Dino extends Default {
   }
 
   void hitGround() {
-		if (loc.y > height - scl / 2) {
-			touchGround = true;
-			loc.y = height - scl / 2;
-		} else touchGround = false;
+    if (loc.y > height - scl / 2) {
+      touchGround = true;
+      loc.y = height - scl / 2;
+    } else touchGround = false;
   }
 
   boolean isDead () {
