@@ -90,7 +90,7 @@ class Dino extends Default {
     } else touchGround = false;
   }
 
-boolean isDead () {
+  boolean isDead () {
     return liv <= 0;
   }
 
