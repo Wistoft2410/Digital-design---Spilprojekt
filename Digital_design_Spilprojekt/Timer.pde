@@ -28,7 +28,6 @@ class Timer {
 
   void update () {
     countDown();
-    display();
   }
 
   void display () {
@@ -45,6 +44,11 @@ class Timer {
       println("No eggs");
     }
     text(sek, loc.x, loc.y);
+  }
+
+  void run() {
+    update();
+    display();
   }
 
   void countDown() {
