@@ -3,7 +3,7 @@ class Dino extends Default {
   boolean touchGround;
   float speed;
 
-  	Dino () {
+    Dino () {
     super();
     liv = 3;
     loc = new PVector(width/2, height/2);
@@ -15,9 +15,9 @@ class Dino extends Default {
   }
 
   void update (ArrayList<Egg> eggs) {
-    
+
     funktion();
-    
+
     collisionWithEggs(eggs);
     display();
     move();
@@ -79,7 +79,7 @@ class Dino extends Default {
       vel.y -= height*0.009;
       //vel.y -= constrain(height*0.011,20,height*0.013);
       touchGround = false;
-     
+
     }
   }
 }
