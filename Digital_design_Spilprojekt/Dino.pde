@@ -17,22 +17,22 @@ class Dino extends Default {
     super();
     liv = 3;
 
-    loc = new PVector(width/2, height/2);
+    loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
-    acc = new PVector(0, 0.01);
+    acc = new PVector(0, 0.1);
 
     scl = (height + width)/50;
 
     touchGround = false;
-    speed = 4;
+    speed = 3;
   }
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
     for (Egg egg : eggs) {
       // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
       // Vi må lige finde ud af hvordan det kan gøres bedre!
-      // Grunden til at der divideres med 2 er fordi vi gerne vil have fat i selve "radius"
-      float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 2;
+      // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
+      float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 3;
       float actualDist  = dist(egg.loc.x, egg.loc.y, loc.x, loc.y);
 
       // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
@@ -62,16 +62,16 @@ class Dino extends Default {
     collisionWithEggs(eggs);
 
     // Tilføj kun tyngdekraft når vi har ramt jorden!
-    vel.add(acc);
+    if (!touchGround) vel.add(acc);
     loc.add(vel);
-    println(vel);
 
-    // Der skal være en maksimum fart, som lige nu er på de 5
-    if (vel.mag() > 5) vel.setMag(5);
+    // Der skal være en maksimum fart hen af x-aksen, som lige nu er på de 3
+    if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
 
     move();
 
     hitGround();
+    println(vel);
   }
 
   void run(ArrayList<Egg> eggs) {
