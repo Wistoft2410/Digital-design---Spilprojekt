@@ -19,12 +19,12 @@ class Dino extends Default {
 
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
-    acc = new PVector(0, height*0.000167);
+    acc = new PVector(0, 0.01);
 
     scl = (height + width)/50;
 
     touchGround = false;
-    speed = scl/8;
+    speed = 4;
   }
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
@@ -61,8 +61,13 @@ class Dino extends Default {
   void update() {
     collisionWithEggs(eggs);
 
+    // Tilføj kun tyngdekraft når vi har ramt jorden!
     vel.add(acc);
     loc.add(vel);
+    println(vel);
+
+    // Der skal være en maksimum fart, som lige nu er på de 5
+    if (vel.mag() > 5) vel.setMag(5);
 
     move();
 
@@ -82,7 +87,7 @@ class Dino extends Default {
 		if (loc.y > height - scl / 2) {
 			touchGround = true;
 			loc.y = height - scl / 2;
-		}
+		} else touchGround = false;
   }
 
   boolean isDead () {
@@ -90,14 +95,10 @@ class Dino extends Default {
   }
 
   void move() {
-    if (keyPressed) {
-      // Kan ikke helt fikse det her god damnit :(
-      if (keyCode == RIGHT) loc.add(new PVector(speed, 0));
-      if (keyCode == LEFT) loc.add(new PVector(-speed, 0));
-      if (keyCode == UP && touchGround) {
-				vel.y -= height * 0.009;
-				touchGround = false;
-			}
-    }
+    if (keyPressed && keyCode == LEFT) vel.add(new PVector(-speed, 0));
+    else if (keyPressed && keyCode == RIGHT) vel.add(new PVector(speed, 0));
+    else vel.x = 0;
+
+    if (keyPressed && keyCode == UP && touchGround) vel.add(new PVector(0, -speed));
   }
 }
