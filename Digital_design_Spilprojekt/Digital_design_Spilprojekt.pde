@@ -1,6 +1,7 @@
 GameSystem gameSystem;
 Background b;
 
+
 void setup() {
   frameRate(60);
   size(800, 800);
@@ -12,6 +13,7 @@ void draw() {
   background(200);
   b.display();
   gameSystem.update();
+  b.display();
 }
 
 void mousePressed () {
