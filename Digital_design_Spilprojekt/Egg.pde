@@ -4,6 +4,7 @@ class Egg {
   PVector loc;
   PVector vel;
   PVector acc;
+	float lifespan;
 
   boolean touchGround;
 
