@@ -34,14 +34,13 @@ class Timer {
     textAlign(CENTER);
     textSize(timerSize);
 
-    if ( deathMode ) { 
+    if (deathMode) { 
       fill(0, 200, 0);
 
       //println("Eggs");
-      gameSystem.eggs.add(new Egg(random(0, width), 0));
-
+      gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
     }
-    if ( !deathMode ) {
+    if (!deathMode) {
       fill(200, 0, 0);
       //println("No eggs");
     }
