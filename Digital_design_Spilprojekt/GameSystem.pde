@@ -1,28 +1,51 @@
+/*
+ GameSystem klassen indeholder alle spil objekter
+ og holder styr på selve spil systemet
+ (point, liv)
+*/
+
 class GameSystem {
-  
-  ArrayList<Egg> egg;
   Dino dino;
   Heart heart;
   Timer timer;
+	int score;
+
+  ArrayList<Egg> eggs;
+  ArrayList<Meteor> meteorer;
 
   GameSystem() {
-    egg = new ArrayList<Egg>();
-    dino = new Dino();
-    timer = new Timer(width/2, 0, 10);
-    heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
+    this.eggs = new ArrayList<Egg>();
+    this.meteorer = new ArrayList<Meteor>();
+
+    this.dino = new Dino();
+    this.timer = new Timer(width/2, 0, 10);
+    this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
   }
 
-
+	void incrementScore() {
+		score++;
+	}
 
   void update() {
-    dino.update();
+    println(score);
+    dino.update(eggs);
     heart.display();
     timer.update();
-    for (int i = 0; i < egg.size(); i++) {
-      egg.get(i).update();
-      if (egg.get(i).loc.y > height) {
-        egg.remove(i);
-      }
-    }
+    fill(0);
+    textSize(24);
+    text("Score: " + score ,width*0.75,height*0.0725);
+
+    for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
+      egg.run();
+      if (egg.loc.y > height) 
+				eggs.remove(egg);
+    	}
+
+    //for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
+      //meteor.run();
+      //if (meteor.loc.y > height) {
+        //meteorer.remove(meteor);
+      //}
+    //}
   }
 }

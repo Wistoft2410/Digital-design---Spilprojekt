@@ -1,9 +1,9 @@
-
 GameSystem gameSystem;
 Background b;
 
 
 void setup() {
+  frameRate(60);
   size(800, 800);
   gameSystem = new GameSystem();
   b = new Background();
@@ -11,12 +11,18 @@ void setup() {
 
 void draw() {
   background(200);
+  b.display();
   gameSystem.update();
   b.display();
 }
 
 void mousePressed () {
-  gameSystem.egg.add(new Egg(mouseX,mouseY));
+  //gameSystem.eggs.add(new Egg(mouseX,mouseY));
+   gameSystem.eggs.add(new Egg(random(0,width), 0));
+  
+   //gameSystem.meteorer.add(new Meteor(random(width), 0));
+  //gameSystem.meteorer.add(new Meteor(mouseX,mouseY));
+ 
 }
 
 void keyPressed() {

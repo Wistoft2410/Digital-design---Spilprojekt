@@ -1,53 +1,47 @@
-PImage img; 
+class Egg extends Default {
+  PImage img; 
 
-class Egg {
+  float lifespan;
 
-  PVector gravity;
-  PVector loc;
-  PVector vel;
-  PVector acc;
+  boolean swallowed;
   boolean touchGround;
-  float eggSizeX;
-  float eggSizeY;
 
-  //Deafult constructors
-  Egg () {
-    eggSizeX = width/50;
-    eggSizeY = height/30;
-    touchGround = false;
-    gravity = new PVector (0, height*0.000167);
-    loc = new PVector(width/2, height/2);
-    vel = new PVector(0, 0);
-    acc = new PVector(0, 0);
-  }
+  float eggSizeX = scl;
+  float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
+    img = loadImage("../Ressources/Egg.png");
+    lifespan = 255;
+    swallowed = false;
+
     eggSizeX = width/50;
     eggSizeY = height/30;
     touchGround = false;
-    gravity = new PVector (0, height*0.000167);
+
     loc = new PVector(loc_x, loc_y);
     vel = new PVector(0, 0);
-    acc = new PVector(0, 0);
-  }
-
-  void update () {
-    applyForce(gravity);
-    vel.add(acc);
-    loc.add(vel);
-    acc.mult(0);
-    display();
-  }
-
-  void applyForce( PVector force ) {
-    acc.add(force);
+    acc = new PVector(0, height*0.000167);
   }
 
   void display () {
-    img = loadImage("Egg.png");
-    noStroke();
-    fill(255, 223, 0);
-    image(img, loc.x, loc.y, eggSizeX, eggSizeY);
-    
+    // Fjerner alpha'en så det ser ud som om den forsvinder lidt efter lidt.
+    // Dette sker kun når swallow() metoden er blevet kaldt
+    if (swallowed) lifespan -= 50;
+    fill(255, 223, 0, lifespan);
+    ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
+  }
+
+  void update () {
+    vel.add(acc);
+    loc.add(vel);
+  }
+
+  void run() {
+    update();
+    display();
+  }
+
+  void swallow() {
+    swallowed = true;
   }
 }
