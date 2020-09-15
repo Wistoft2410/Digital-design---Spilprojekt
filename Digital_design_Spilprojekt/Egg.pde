@@ -32,7 +32,8 @@ class Egg extends Default {
     img = loadImage("../Ressources/Egg.png");
     noStroke();
     fill(255, 223, 0);
-    image(img, loc.x, loc.y, eggSizeX, eggSizeY);
+    //image(img, loc.x, loc.y, eggSizeX, eggSizeY);
+    ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
     
   }
 }
