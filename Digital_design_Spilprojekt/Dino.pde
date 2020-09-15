@@ -27,6 +27,7 @@ class Dino extends Default {
     for (Egg egg : eggs) {
       if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
+        egg.swallow();
         gameSystem.incrementScore();
       }
     }
@@ -40,19 +41,14 @@ class Dino extends Default {
   }
 
   void jorden () {
-    if ( loc.y > height - scl/2 ) {
+    if (loc.y > height - scl/2) {
       touchGround = true;
       loc.y = height - scl/2;
     }
   }
 
   boolean isDead () {
-    if (liv <= 0) {
-      liv = 0;
-      return true;
-    } else {
-      return false;
-    }
+    return liv <= 0;
   }
 
   void move() {
