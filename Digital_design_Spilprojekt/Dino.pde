@@ -3,7 +3,7 @@ class Dino extends Default {
   boolean touchGround;
   float speed;
 
-  Dino () {
+  	Dino () {
     super();
     liv = 3;
     loc = new PVector(width/2, height/2);
