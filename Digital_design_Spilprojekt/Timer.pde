@@ -2,9 +2,12 @@ class Timer {
 
   int startSek;
   int sek;
+
   PVector loc;
+
   float timerSize;
   float a = frameRate;
+
   boolean deathMode;
 
   Timer () {
@@ -31,11 +34,15 @@ class Timer {
   void display () {
     textAlign(CENTER);
     textSize(timerSize);
+
     if ( deathMode ) { 
-      fill(200, 0, 0);
-    }
-    if ( !deathMode ) { 
       fill(0, 200, 0);
+      println("Eggs");
+      gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
+    }
+    if ( !deathMode ) {
+      fill(200, 0, 0);
+      println("No eggs");
     }
     text(sek, loc.x, loc.y);
   }
