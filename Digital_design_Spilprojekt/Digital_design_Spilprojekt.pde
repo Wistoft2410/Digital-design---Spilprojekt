@@ -1,11 +1,11 @@
+import processing.sound.*;
 GameSystem gameSystem;
 Background b;
-
 
 void setup() {
   frameRate(60);
   size(800, 800);
-  gameSystem = new GameSystem();
+  gameSystem = new GameSystem(this);
   b = new Background();
 }
 

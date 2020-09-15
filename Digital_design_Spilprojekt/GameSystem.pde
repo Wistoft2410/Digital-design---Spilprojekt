@@ -1,3 +1,4 @@
+import processing.sound.*;
 /*
  GameSystem klassen indeholder alle spil objekter
  og holder styr på selve spil systemet
@@ -10,10 +11,13 @@ class GameSystem {
   Timer timer;
 	int score;
 
+  SoundFile ding;
+
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
 
-  GameSystem() {
+  GameSystem(PApplet ding_) {
+    ding = new SoundFile(ding_,"../Ressources/Ding.mp3");
     this.eggs = new ArrayList<Egg>();
     this.meteorer = new ArrayList<Meteor>();
 

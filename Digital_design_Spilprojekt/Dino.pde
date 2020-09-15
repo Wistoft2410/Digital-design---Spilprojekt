@@ -1,4 +1,6 @@
 class Dino extends Default {
+
+  
   int liv;
   boolean touchGround;
   float speed;
@@ -35,6 +37,7 @@ class Dino extends Default {
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
         egg.swallow();
         gameSystem.incrementScore();
+        gameSystem.ding.play();
       }
     }
   }
