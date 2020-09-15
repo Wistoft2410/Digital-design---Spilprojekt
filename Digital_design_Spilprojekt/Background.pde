@@ -10,7 +10,7 @@ class Background {
 
   void display() {
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
-    println(frameRate);
+   // println(frameRate);
 
     
     //planet med måne i omkreds

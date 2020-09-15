@@ -27,10 +27,13 @@ class GameSystem {
 	}
 
   void update() {
-    
+    println(score);
     dino.update(eggs);
     heart.display();
     timer.update();
+    fill(0);
+    textSize(24);
+    text("Score: " + score ,width*0.75,height*0.0725);
 
     for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
       egg.run();
