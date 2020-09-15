@@ -28,16 +28,21 @@ class Dino extends Default {
   }
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
-    if (eggs != null) {
-      for (Egg egg : eggs) {
-        // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
-        // Vi må lige finde ud af hvordan det kan gøres bedre!
-        // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi swallowed boolean variable om vi har ramt eller ej!
-        if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < (egg.eggSizeX + egg.eggSizeY) / 2 && !egg.swallowed) {
-          // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
-          egg.swallow();
-          gameSystem.incrementScore();
-        }
+    for (Egg egg : eggs) {
+      // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
+      // Vi må lige finde ud af hvordan det kan gøres bedre!
+      // Grunden til at der divideres med 2 er fordi vi gerne vil have fat i selve "radius"
+      float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 2;
+      float actualDist  = dist(egg.loc.x, egg.loc.y, loc.x, loc.y);
+
+      // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
+      // for at se om Dino'en har ramt ægget eller ej!
+      boolean hitAlready = !egg.swallowed;
+
+      if (actualDist < minimumDist && hitAlready) {
+        // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
+        egg.swallow();
+        gameSystem.incrementScore();
       }
     }
   }
@@ -61,17 +66,19 @@ class Dino extends Default {
   }
 
   void run(ArrayList<Egg> eggs) {
-    eggs = eggs;
+    // Jeg bliver nødt til at bruge "this." her, da jeg gerne vil referere til "eggs"
+    // variablen i det globale scope, håber i forstår ellers spørg i bare!
+    this.eggs = eggs;
 
     update();
     display();
   }
 
   void hitGround() {
-    if (loc.y >= height - (scl / 2)) {
-      touchGround = true;
-      loc.y = height - (scl / 2);
-    } else touchGround = false;
+		if (loc.y > height - scl / 2) {
+			touchGround = true;
+			loc.y = height - scl / 2;
+		}
   }
 
   boolean isDead () {
@@ -83,7 +90,10 @@ class Dino extends Default {
       // Kan ikke helt fikse det her god damnit :(
       if (keyCode == RIGHT) loc.add(new PVector(speed, 0));
       if (keyCode == LEFT) loc.add(new PVector(-speed, 0));
-      if (keyCode == UP && touchGround) loc.add(new PVector(0, -speed));
+      if (keyCode == UP && touchGround) {
+				vel.y -= height * 0.009;
+				touchGround = false;
+			}
     }
   }
 }

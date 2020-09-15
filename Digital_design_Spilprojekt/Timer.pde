@@ -36,12 +36,12 @@ class Timer {
 
     if ( deathMode ) { 
       fill(0, 200, 0);
-      println("Eggs");
+      //println("Eggs");
       gameSystem.eggs.add(new Egg(random(0, width), 0));
     }
     if ( !deathMode ) {
       fill(200, 0, 0);
-      println("No eggs");
+      //println("No eggs");
     }
     text(sek, loc.x, loc.y);
   }

@@ -29,9 +29,14 @@ class GameSystem {
 	}
 
   void run() {
+		//println(score);
     dino.run(eggs);
     timer.run();
     heart.display();
+
+		fill(0);
+		textSize(24);
+		text("Score: " + score, width * 0.75, height * 0.0725);
 
     for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
       if (egg.loc.y > height) eggs.remove(egg);
