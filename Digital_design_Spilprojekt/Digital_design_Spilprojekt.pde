@@ -10,8 +10,8 @@ void setup() {
 
 void draw() {
   background(200);
-  gameSystem.update();
   b.display();
+  gameSystem.update();
 }
 
 void mousePressed () {
