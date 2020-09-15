@@ -32,12 +32,14 @@ class Dino {
     for (Egg egg : eggs) {
       if (dist(egg.loc.x, egg.loc.y, loc.x, loc.y) < 8) {
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
-				gameSystem.incrementScore();
-			}
+        gameSystem.incrementScore();
+      }
     }
   }
 
   void display () {
+    stroke(0);
+    strokeWeight(0);
     fill(0);
     ellipse(loc.x, loc.y, dinoSize, dinoSize);
   }

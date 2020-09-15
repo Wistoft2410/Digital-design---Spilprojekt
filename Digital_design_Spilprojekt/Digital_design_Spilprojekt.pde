@@ -1,13 +1,16 @@
 GameSystem gameSystem;
+Background b;
 
 void setup() {
   size(800, 800);
   gameSystem = new GameSystem();
+  b = new Background();
 }
 
 void draw() {
   background(200);
   gameSystem.update();
+  b.display();
 }
 
 void mousePressed () {
