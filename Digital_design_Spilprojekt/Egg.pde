@@ -1,9 +1,11 @@
 class Egg extends Default {
+
 	PImage img; 
   
 	float lifespan;
 
 	boolean swallowed;
+
   boolean touchGround;
 
   float eggSizeX = scl;
@@ -36,13 +38,15 @@ class Egg extends Default {
     loc.add(vel);
   }
 
-	void run() {
-		update();
-		display();
-	}
+  void run() {
+    update();
+    display();
+  }
+
 
 	void swallow() {
 		swallowed = true;
 	}
+
 
 }

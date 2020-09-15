@@ -15,6 +15,9 @@ class Dino extends Default {
   }
 
   void update (ArrayList<Egg> eggs) {
+    
+    funktion();
+    
     collisionWithEggs(eggs);
     display();
     move();
@@ -33,6 +36,16 @@ class Dino extends Default {
         egg.swallow();
         gameSystem.incrementScore();
       }
+    }
+  }
+
+  void funktion () {
+    if (loc.y == height - scl/2) {
+      vel.mult(0);
+      acc.mult(0);
+    }
+    if (loc.y < height - scl/2) {
+      acc.y = height*0.000167;
     }
   }
 
@@ -62,8 +75,11 @@ class Dino extends Default {
       loc.sub(speed, 0);
     }
     if ( keyCode == UP && keyPressed && touchGround) {
+      //println(height*0.013);
+      vel.y -= height*0.009;
+      //vel.y -= constrain(height*0.011,20,height*0.013);
       touchGround = false;
-      vel.y -= height*0.013;
+     
     }
   }
 }
