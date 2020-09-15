@@ -1,22 +1,17 @@
-class Dino {
+class Dino extends Default {
   int liv;
-
-  PVector loc;
-  PVector vel;
-  PVector acc;
-
-  float dinoSize;
   boolean touchGround;
   float speed;
 
   Dino () {
+    super();
     liv = 3;
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
     acc = new PVector(0, height*0.000167);
-    dinoSize = (height + width)/50;
+    scl = (height + width)/50;
     touchGround = false;
-    speed = dinoSize/8;
+    speed = scl/8;
   }
 
   void update (ArrayList<Egg> eggs) {
@@ -39,13 +34,13 @@ class Dino {
 
   void display () {
     fill(0);
-    ellipse(loc.x, loc.y, dinoSize, dinoSize);
+    ellipse(loc.x, loc.y, scl, scl);
   }
 
   void jorden () {
-    if ( loc.y > height - dinoSize/2 ) {
+    if ( loc.y > height - scl/2 ) {
       touchGround = true;
-      loc.y = height - dinoSize/2;
+      loc.y = height - scl/2;
     }
   }
 

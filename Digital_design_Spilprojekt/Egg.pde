@@ -1,15 +1,12 @@
 PImage img; 
 
-class Egg {
-  PVector loc;
-  PVector vel;
-  PVector acc;
+class Egg extends Default {
+  
 	float lifespan;
-
   boolean touchGround;
 
-  float eggSizeX;
-  float eggSizeY;
+  float eggSizeX = scl;
+  float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
     eggSizeX = width/50;
