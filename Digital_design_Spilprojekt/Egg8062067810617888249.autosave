@@ -29,11 +29,7 @@ class Egg extends Default {
 	}
 
   void display () {
-<<<<<<< HEAD
-   // img = loadImage("../Ressources/Egg.png");
-=======
-  //  img = loadImage("../Ressources/Egg.png");
->>>>>>> ca0f6ca3844e069d4c9baba0d2571b2f0c990a79
+
     noStroke();
     fill(255, 223, 0);
     //image(img, loc.x, loc.y, eggSizeX, eggSizeY);
