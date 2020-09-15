@@ -1,14 +1,19 @@
-PImage img; 
-
 class Egg extends Default {
+	PImage img; 
   
 	float lifespan;
+
+	boolean swallowed;
   boolean touchGround;
 
   float eggSizeX = scl;
   float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
+    img = loadImage("../Ressources/Egg.png");
+		lifespan = 255;
+		swallowed = false;
+
     eggSizeX = width/50;
     eggSizeY = height/30;
     touchGround = false;
@@ -28,12 +33,15 @@ class Egg extends Default {
 		display();
 	}
 
+	void swallow() {
+		swallowed = true;
+	}
+
   void display () {
-    img = loadImage("../Ressources/Egg.png");
-    noStroke();
-    fill(255, 223, 0);
-    //image(img, loc.x, loc.y, eggSizeX, eggSizeY);
+		// Fjerne alpha så det siger ud som om den forsvinder lidt efter lidt.
+		// Dette sker kun når swallow() metoden er blevet kaldt
+		if (swallowed) lifespan -= 50;
+    fill(255, 223, 0, lifespan);
     ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
-    
   }
 }
