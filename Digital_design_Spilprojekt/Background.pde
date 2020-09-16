@@ -30,7 +30,7 @@ class Background {
     stroke(0);
     strokeWeight(0);
     fill(139, 69, 19, 200);
-    rect(vandloc.x, vandloc.y, 30, 150, 0, 100, 0, 0);  
+    rect(vandloc.x+15, vandloc.y+74, 30, 150, 0, 100, 0, 0);  
 
     //sø
     fill(35, 137, 218);
