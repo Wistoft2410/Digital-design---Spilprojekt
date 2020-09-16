@@ -1,4 +1,6 @@
 class Dino extends Default {
+
+  
   int liv;
 
   ArrayList<Egg> eggs;
@@ -12,16 +14,33 @@ class Dino extends Default {
   float speed;
   float scl;
 
-
+  PImage dinoMundRight;
+  PImage dinoMundRightDance;
+  PImage dinoMundLeft;
+  PImage dinoMundLeftDance;
+  PImage dinoBack;
+  PImage dinoBackDance;
+  
+  Timer picTimer;
+  
   Dino() {
     super();
     liv = 3;
+    
+    picTimer = new Timer(0.33);
 
+    dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
+    dinoMundRightDance = loadImage("../Ressources/dinoMundRightDance.png");
+    dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
+    dinoMundLeftDance = loadImage("../Ressources/dinoMundLeftDance.png");
+    dinoBack = loadImage("../Ressources/dinoBack.png");
+    dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
+    
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.1);
 
-    scl = (height + width)/50;
+    scl = (height + width)/10;
 
     touchGround = false;
     speed = 3;
@@ -40,9 +59,13 @@ class Dino extends Default {
       boolean hitAlready = !egg.swallowed;
 
       if (actualDist < minimumDist && hitAlready) {
+        //Ægget står stille når man får point
+        egg.acc.mult(0);
+        egg.vel.mult(0);
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
         egg.swallow();
         gameSystem.incrementScore();
+        gameSystem.ding.play();
       }
     }
   }
@@ -54,8 +77,16 @@ class Dino extends Default {
 
     stroke(0);
     strokeWeight(0);
-    ellipse(loc.x, loc.y, scl, scl);
-
+    //Dino billede
+    imageMode(CENTER);
+    if ( keyCode == RIGHT && picTimer.deathMode ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
+    else if ( keyCode == RIGHT && !picTimer.deathMode ) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
+    else if ( keyCode == LEFT && picTimer.deathMode ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else if ( keyCode == LEFT && !picTimer.deathMode ) image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
+    else if ( picTimer.deathMode ) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    else if ( !picTimer.deathMode ) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
+    else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    imageMode(CORNER);
   }
 
   void update() {
@@ -72,6 +103,7 @@ class Dino extends Default {
     if (abs(vel.y) > 10) vel.y = vel.y > 10 ? 10 : -10;
 
     picTimer.update();
+
   }
 
   void run(ArrayList<Egg> eggs) {
@@ -101,6 +133,7 @@ class Dino extends Default {
 
     if (keyPressed && keyCode == UP && touchGround) {
       vel.mult(0);
+
       vel.add(new PVector(0, -speed));
     }
   }
