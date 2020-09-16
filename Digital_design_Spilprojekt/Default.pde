@@ -1,5 +1,6 @@
 // TODO: Mangler vel også en run metode der kalder på update og display metdoerne!
 class Default {
+  
   PVector loc;
   PVector vel;
   PVector acc;

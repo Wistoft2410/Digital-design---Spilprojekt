@@ -2,9 +2,7 @@ class Knap {
 
   PVector loc;
 
-  int r;
-  int g;
-  int b;
+  int r, g, b;
 
   float widthSize;
   float heightSize;

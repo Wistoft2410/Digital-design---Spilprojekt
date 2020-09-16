@@ -4,9 +4,6 @@ class Dino extends Default {
   ArrayList<Egg> eggs;
 
 
-  PVector loc;
-  PVector vel;
-  PVector acc;
 
   boolean touchGround, isLeft, isRight, isUp;
 
