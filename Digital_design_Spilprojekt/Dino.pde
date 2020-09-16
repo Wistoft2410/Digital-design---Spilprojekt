@@ -16,6 +16,7 @@ class Dino extends Default {
 
   PImage dinoMundRight;
   PImage dinoMundLeft;
+  PImage dinoBack;
 
   Dino() {
     super();
@@ -23,7 +24,7 @@ class Dino extends Default {
 
     dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
     dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
-
+    dinoBack = loadImage("../Ressources/dinoBack.png");
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.1);
@@ -65,9 +66,11 @@ class Dino extends Default {
 
     stroke(0);
     strokeWeight(0);
+    //Dino billede
     imageMode(CENTER);
     if ( keyCode == RIGHT ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
-    if ( keyCode == LEFT ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else if ( keyCode == LEFT ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
     imageMode(CORNER);
   }
 
