@@ -14,10 +14,13 @@ class Dino extends Default {
   float speed;
   float scl;
 
+  PImage dinoMund;
 
   Dino() {
     super();
     liv = 3;
+
+    dinoMund = loadImage("../Ressources/dinoMund.png");
 
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
@@ -77,7 +80,7 @@ class Dino extends Default {
     move();
 
     hitGround();
-    println(vel);
+    //println(vel);
   }
 
   void run(ArrayList<Egg> eggs) {
@@ -105,6 +108,9 @@ class Dino extends Default {
     else if (keyPressed && keyCode == RIGHT) vel.add(new PVector(speed, 0));
     else vel.x = 0;
 
-    if (keyPressed && keyCode == UP && touchGround) vel.add(new PVector(0, -speed));
+    if (keyPressed && keyCode == UP && touchGround) { 
+      vel.add(new PVector(0, -speed));
+     image(dinoMund,loc.x,loc.y,scl,scl);
+    }
   }
 }
