@@ -3,16 +3,22 @@ GameSystem gameSystem;
 Menu menu;
 
 
+
 void setup() {
   frameRate(60);
   size(800, 800);
   gameSystem = new GameSystem(this);
   menu = new Menu();
+  
+     
 }
 
 void draw() {
+
   background(200); 
   game();
+
+  
 }
 
 void mousePressed () {

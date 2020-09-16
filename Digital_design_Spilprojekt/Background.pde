@@ -3,20 +3,37 @@ class Background {
   PVector vandloc;
   PVector soloc;
 
+
   Psystem ps;
 
   Background() {
     vandloc = new PVector(-1, height/1.9);
     soloc = new PVector (100, height/1.40);
     ps = new Psystem(new PVector(60, 566), new PVector(447, 480));
+    
+    
   }
 
   void display() {
     stroke(0);
     strokeWeight(0);
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
-
-
+    
+    //tree
+    int t = 50;
+    while(t <=width) {
+      
+    pushMatrix();
+    fill(118, 92, 72);
+    rectMode(CENTER);
+    translate(220+t, 550);
+    rect(0+t, 0, 25, 50);
+    fill(58, 95, 11);
+    ellipse(0+t, -40, 45, 40);
+    t+=30;
+    popMatrix();
+    } 
+       
     //planet med måne i omkreds
     fill(100);
     pushMatrix();
@@ -48,7 +65,7 @@ class Background {
     stroke(255, 102, 0);
     strokeWeight(5);
     noFill();
-    translate(width/2, height/1.7);
+    translate(width/2, height/1.68);
     curve(0, -100, 0, 0, 100, 0, 100, -100);
     curve(0, -100, 0, 0, -100, 100, -400, 100);
     curve(200, 0, 100, 0, 200, 100, 400, 100);
@@ -68,5 +85,8 @@ class Background {
     //Partikel system
     ps.run();
 
+  }
+  void tree () {
+   
   }
 }

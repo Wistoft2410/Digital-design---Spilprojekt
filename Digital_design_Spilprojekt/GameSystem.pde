@@ -10,8 +10,8 @@ class GameSystem {
   Dino dino;
   Heart heart;
   Timer timer;
-
   Background b;
+
   Psystem ps;
   SoundFile ding;
   int score;
