@@ -2,15 +2,37 @@ class Menu {
 
   Knap startKnap;
 
+  Knap exitGame;
+
+  PVector locTitel;
+
+  String titel;
+
   Menu () {
-    startKnap = new Knap(width/2, height/2);
+    startKnap = new Knap(width/2, height/2, "Start", width*0.5, height*0.5);
+    exitGame = new Knap(width*0.9, height*0.9, "Exit game", width*0.1, height*0.1);
+    titel = "b";
+    locTitel = new PVector(width/2, height*0.25);
   }
 
 
   void update() {
     startKnap.update();
+    exitGame.update();
+    display();
+    leave();
   }
 
+  void display() {
+    fill(0);
+    textAlign(CENTER);
+    textSize((height+width)*0.1);
+    text(titel, locTitel.x, locTitel.y, width*0.5, height*0.5);
+  }
 
-  
+  void leave() {
+    if ( !exitGame.on ) {
+      exit();
+    }
+  }
 }

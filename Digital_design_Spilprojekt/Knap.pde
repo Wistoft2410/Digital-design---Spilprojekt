@@ -11,16 +11,19 @@ class Knap {
   float kant;
 
   boolean on;
+  
+  String name;
 
-  Knap (float loc_x, float loc_y) {
+  Knap (float loc_x, float loc_y, String name_, float widthSize_,float heightSize_) {
     loc= new PVector(loc_x, loc_y);
     r = 0;
     g = 200;
     b = 0;
-    widthSize = width*0.5;
-    heightSize = height*0.5;
+    widthSize = widthSize_;
+    heightSize = heightSize_;
     kant = 10;
     on = true;
+    name = name_;
   }
 
   void update() {
@@ -32,6 +35,10 @@ class Knap {
     rectMode(CENTER);
     fill(r, g, b);
     rect(loc.x, loc.y, widthSize, heightSize, kant);
+    fill(0);
+    textAlign(CENTER);
+    textSize((heightSize+widthSize)*0.1);
+    text(name,loc.x,loc.y,widthSize,heightSize);
   }
 
 
