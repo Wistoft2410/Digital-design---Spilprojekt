@@ -3,12 +3,14 @@ class Default {
   PVector loc;
   PVector vel;
   PVector acc;
+  PVector loc2;
 
   float scl;
 
 
   Default () {
     loc = new PVector(0, 0);
+    loc2 = new PVector(0, 0);
     vel = new PVector(0, 0);
     acc = new PVector(0, height*0.000167);
 
