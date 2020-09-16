@@ -43,7 +43,7 @@ class Dino extends Default {
     scl = (height + width)/10;
 
     touchGround = false;
-    speed = 5;
+    speed = 3;
   }
 
   void collisionWithEggs(ArrayList<Egg> eggs) {
