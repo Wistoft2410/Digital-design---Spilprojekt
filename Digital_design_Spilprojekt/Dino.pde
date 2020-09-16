@@ -71,7 +71,7 @@ class Dino extends Default {
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
     if (abs(vel.y) > 10) vel.y = vel.y > 10 ? 10 : -10;
 
-    println(vel.y);
+    picTimer.update();
   }
 
   void run(ArrayList<Egg> eggs) {
