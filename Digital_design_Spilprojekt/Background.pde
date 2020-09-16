@@ -42,16 +42,15 @@ class Background {
 
     //vulkan
     noFill();
-
     pushMatrix();
     stroke(255, 102, 0);
     strokeWeight(5);
     noFill();
-    translate(width/2,height/1.7);
-    curve(0,-100,0,0,100,0,100,-100);
-    curve(0,-100,0,0,-100,100,-400,100);
-    curve(200,0,100,0,200,100,400,100);
-   fill(255, 102, 0);
+    translate(width/2, height/1.7);
+    curve(0, -100, 0, 0, 100, 0, 100, -100);
+    curve(0, -100, 0, 0, -100, 100, -400, 100);
+    curve(200, 0, 100, 0, 200, 100, 400, 100);
+    fill(255, 102, 0);
     beginShape();
     vertex(-90, 100);
     vertex(-45, 75);
@@ -61,14 +60,8 @@ class Background {
     vertex(100, 0);
     vertex(135, 60);
     vertex(200, 100);
-    
     endShape();
-    
     popMatrix();
-    strokeWeight(2);
-    
-    //fill(0);
-   // curve(230, soloc.y, 230, soloc.y, 350, soloc.y - 150, soloc.y, -150);
-    //curve(soloc.y, vandloc.y, vandloc.y, vandloc.y+50, soloc.y+150, vandloc.y, soloc.y+150, vandloc.y);
+
   }
 }
