@@ -90,20 +90,20 @@ class Dino extends Default {
   }
 
   void update() {
-    collisionWithEggs(eggs);
+    move();
 
-    // Tilføj kun tyngdekraft når vi har ramt jorden!
-    if (!touchGround) vel.add(acc);
+    vel.add(acc);
     loc.add(vel);
+
+    hitGround();
+    collisionWithEggs(eggs);
 
     // Der skal være en maksimum fart hen af x-aksen, som lige nu er på de 3
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
+    if (abs(vel.y) > 10) vel.y = vel.y > 10 ? 10 : -10;
 
-    move();
-
-    hitGround();
     picTimer.update();
-    //println(vel);
+
   }
 
   void run(ArrayList<Egg> eggs) {
@@ -131,7 +131,9 @@ class Dino extends Default {
     else if (keyPressed && keyCode == RIGHT) vel.add(new PVector(speed, 0));
     else vel.x = 0;
 
-    if (keyPressed && keyCode == UP && touchGround) { 
+    if (keyPressed && keyCode == UP && touchGround) {
+      vel.mult(0);
+
       vel.add(new PVector(0, -speed));
     }
   }

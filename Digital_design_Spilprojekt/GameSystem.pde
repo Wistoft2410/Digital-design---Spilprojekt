@@ -37,6 +37,7 @@ class GameSystem {
   }
 
   void run() {
+
     update();
   }
 
