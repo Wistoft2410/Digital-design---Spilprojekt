@@ -12,45 +12,44 @@ class GameSystem {
   Heart heart;
   Timer timer;
 
+  Background b;
   Psystem ps;
   SoundFile ding;
   int score;
-
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
 
   GameSystem(PApplet ding_) {
+    b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
 
-    score = 0000;
+    score = 0;
+
     this.eggs = new ArrayList<Egg>();
     // Bliver ikke brugt endnu
     this.meteorer = new ArrayList<Meteor>();
-
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
-    ps = new Psystem(new PVector(60, 566));
   }
 
   void incrementScore() {
     score++;
   }
-  
-  void run(){
+
+  void run() {
+
     update();
   }
 
 
   void update() {
-    //println(score);
+    b.display();
     dino.run(eggs);
     heart.display();
     timer.run();
 
-    ps.ad();
-    ps.run();
 
     fill(0);
     textSize(24);
@@ -73,5 +72,9 @@ class GameSystem {
     }
     }
     
+  }
+  boolean gameOver () {
+    if ( dino.liv <= 0 ) return true;
+    else return false;
   }
 }
