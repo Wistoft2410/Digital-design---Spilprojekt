@@ -1,7 +1,7 @@
 class Timer {
 
-  int startSek;
-  int sek;
+  float startSek;
+  float sek;
 
   PVector loc;
 
@@ -18,11 +18,19 @@ class Timer {
     deathMode = false;
   }
 
-  Timer (float loc_x, float loc_y, int a) { 
+  Timer (float sek_) {
+    timerSize = (width + height) * 0.1;
+    loc = new PVector(0, 0);
+    startSek = sek_;
+    sek = sek_;
+    deathMode = false;
+  }
+
+  Timer (float loc_x, float loc_y, float sek_) { 
     timerSize = (width + height) * 0.1;
     loc = new PVector(loc_x, loc_y + timerSize);
-    startSek = a;
-    sek = a;
+    startSek = sek_;
+    sek = sek_;
     deathMode = false;
   }
 
@@ -44,7 +52,7 @@ class Timer {
       fill(200, 0, 0);
       //println("No eggs");
     }
-    text(sek, loc.x, loc.y);
+    text((int)sek, loc.x, loc.y);
   }
 
   void run() {
@@ -53,17 +61,19 @@ class Timer {
   }
 
   void countDown() {
+    sek -= 0.0167;
+    /*
     a--;
     if (a < 0) {
       a = frameRate;
       sek -= 1;
     }
-
+*/
     if ( sek <= 0 && !deathMode ) {
       sek = startSek;
       deathMode = true;
     } 
-    if (sek <= 0 && deathMode) {
+    if ( sek <= 0 && deathMode ) {
       sek = startSek;
       deathMode = false;
     }

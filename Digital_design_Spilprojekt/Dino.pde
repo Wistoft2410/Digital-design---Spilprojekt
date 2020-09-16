@@ -17,14 +17,21 @@ class Dino extends Default {
   PImage dinoMundRight;
   PImage dinoMundLeft;
   PImage dinoBack;
-
+  PImage dinoBackDance;
+  
+  Timer picTimer;
+  
   Dino() {
     super();
     liv = 3;
+    
+    picTimer = new Timer(0.5);
 
     dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
     dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
     dinoBack = loadImage("../Ressources/dinoBack.png");
+    dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
+    
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.1);
@@ -70,6 +77,8 @@ class Dino extends Default {
     imageMode(CENTER);
     if ( keyCode == RIGHT ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
     else if ( keyCode == LEFT ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else if ( picTimer.deathMode ) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    else if ( !picTimer.deathMode ) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
     else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
     imageMode(CORNER);
   }
@@ -87,6 +96,7 @@ class Dino extends Default {
     move();
 
     hitGround();
+    picTimer.update();
     //println(vel);
   }
 

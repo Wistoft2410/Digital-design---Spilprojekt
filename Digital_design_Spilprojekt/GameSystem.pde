@@ -26,7 +26,7 @@ class GameSystem {
     this.meteorer = new ArrayList<Meteor>();
 
     this.dino = new Dino();
-    this.timer = new Timer(width/2, 0, 10);
+    this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
   }
 
