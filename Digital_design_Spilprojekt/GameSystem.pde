@@ -14,7 +14,6 @@ class GameSystem {
   Heart heart;
   Timer timer;
   Background b;
-  Map map;
   Psystem ps;
 
   SoundFile ding;
@@ -56,7 +55,6 @@ class GameSystem {
     dino.run(eggs);
     heart.display();
     timer.run();
-    map.display();
 
     fill(0);
     textSize(24);
@@ -79,7 +77,7 @@ class GameSystem {
       }
     }
 
-    for (Map m : m) {
+    for (Map m : (ArrayList<Map>) m.clone()){
       m.display();  
       m.update();
     }

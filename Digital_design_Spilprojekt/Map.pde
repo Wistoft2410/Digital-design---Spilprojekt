@@ -9,7 +9,7 @@ class Map {
   Map() {
         platform = loadImage("../Ressources/Platform.png");
 
-    location = new PVector(mouseX, mouseY);
+    location = new PVector(200, 200);
     velocity = new PVector(1, 0);
     
   }
