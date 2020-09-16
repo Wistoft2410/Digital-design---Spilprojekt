@@ -1,39 +1,30 @@
-class Map {
+class Map extends Default {
   PImage platform;
 
-  PVector location;
-  PVector velocity;
-  PVector acceleration;
+  PVector loc;
+  PVector vel;
+  PVector acc;
 
 
   Map() {
-        platform = loadImage("../Ressources/Platform.png");
-
-
-
-    location = new PVector(200, 200);
-
-
-    location = new PVector(random(100,0), random(0,100));
-
-
-    velocity = new PVector(1, 0);
-    
+    platform = loadImage("../Ressources/Platform.png");   
+    loc = new PVector(random(100, 0), random(0, 100));
+    vel = new PVector(1, 0);
   }
 
-void run() {
- update();
- display();
-}
+  void run() {
+    update();
+    display();
+  }
 
   void update() {
-    location.add(velocity);
+    loc.add(vel);
   }
 
 
   void display() {
     noStroke();
     fill(255);
-    image(platform,location.x,location.y,300,100);
+    image(platform, loc.x, loc.y, 300, 100);
   }
 }
