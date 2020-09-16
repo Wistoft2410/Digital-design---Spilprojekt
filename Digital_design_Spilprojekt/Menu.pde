@@ -9,8 +9,8 @@ class Menu {
   String titel;
 
   Menu () {
-    startKnap = new Knap(width/2, height/2, "Start", width*0.5, height*0.5);
-    exitGame = new Knap(width*0.9, height*0.9, "Exit game", width*0.1, height*0.1);
+    startKnap = new Knap(width*0.5, height*0.3, "Start", width*0.5, height*0.075);
+    exitGame = new Knap(width*0.85, height*0.95, "Exit game", width*0.2, height*0.03);
     titel = "b";
     locTitel = new PVector(width/2, height*0.25);
   }
