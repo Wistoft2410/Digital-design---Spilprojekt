@@ -6,7 +6,6 @@ import processing.sound.*;
  (point, liv)
  */
 
-
 class GameSystem {
   Dino dino;
   Heart heart;
@@ -27,7 +26,6 @@ class GameSystem {
     score = 0;
 
     this.eggs = new ArrayList<Egg>();
-    // Bliver ikke brugt endnu
     this.meteorer = new ArrayList<Meteor>();
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
@@ -39,7 +37,6 @@ class GameSystem {
   }
 
   void run() {
-
     update();
   }
 

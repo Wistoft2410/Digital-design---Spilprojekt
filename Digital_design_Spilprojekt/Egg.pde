@@ -11,8 +11,6 @@ class Egg extends Default {
   float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
-    // Vi bruger ikke billedet til noget !!!
-    //img = loadImage("../Ressources/Egg.png");
     lifespan = 255;
     swallowed = false;
 
