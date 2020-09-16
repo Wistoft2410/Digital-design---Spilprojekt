@@ -39,11 +39,15 @@ class GameSystem {
   void incrementScore() {
     score++;
   }
+  
+  void run(){
+    update();
+  }
 
 
   void update() {
     //println(score);
-    dino.update(eggs);
+    dino.run(eggs);
     heart.display();
     timer.run();
 
