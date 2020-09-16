@@ -23,7 +23,7 @@ class GameSystem {
   GameSystem(PApplet ding_) {
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
 
-    score = 0;
+    score = 0000;
     this.eggs = new ArrayList<Egg>();
     // Bliver ikke brugt endnu
     this.meteorer = new ArrayList<Meteor>();
@@ -54,7 +54,7 @@ class GameSystem {
 
     fill(0);
     textSize(24);
-    text("Score: " + score, width*0.75, height*0.0725);
+    text("Score: "+ score, width*0.75, height*0.0725);
 
 
     for (Egg egg : (ArrayList<Egg>) eggs.clone()) {
@@ -64,12 +64,14 @@ class GameSystem {
       if (egg.loc.y > height) 
         eggs.remove(egg);
     }
-
-    //for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
-    //meteor.run();
-    //if (meteor.loc.y > height) {
-    //meteorer.remove(meteor);
-    //}
-    //}
+    
+    
+    for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
+    meteor.run();
+    if (meteor.loc.y > height) {
+    meteorer.remove(meteor);
+    }
+    }
+    
   }
 }

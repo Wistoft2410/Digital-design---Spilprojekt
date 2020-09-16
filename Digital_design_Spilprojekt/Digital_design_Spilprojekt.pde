@@ -5,7 +5,7 @@ Background b;
 
 void setup() {
   frameRate(60);
-  size(1600, 800);
+  size(800, 800);
   gameSystem = new GameSystem(this);
   b = new Background();
 }

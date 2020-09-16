@@ -47,8 +47,6 @@ class Timer {
 
      // println("Eggs");
 
-
-
       gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
     }
     if (!deathMode) {
