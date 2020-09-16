@@ -14,7 +14,8 @@ class GameSystem {
   Heart heart;
   Timer timer;
   Background b;
-
+  Map map;
+   
   Psystem ps;
   SoundFile ding;
   int score;
@@ -27,9 +28,10 @@ class GameSystem {
   GameSystem(PApplet ding_) {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
-
+    
     score = 0;
-
+    
+    this.map = new Map();
     this.eggs = new ArrayList<Egg>();
     this.meteorer = new ArrayList<Meteor>();
     this.dino = new Dino();
@@ -51,6 +53,7 @@ class GameSystem {
     dino.run(eggs);
     heart.display();
     timer.run();
+    map.display();
 
     fill(0);
     textSize(24);
