@@ -1,4 +1,6 @@
 import processing.sound.*;
+
+
 /*
  GameSystem klassen indeholder alle spil objekter
  
@@ -7,6 +9,7 @@ import processing.sound.*;
  */
 
 class GameSystem {
+
   Dino dino;
   Heart heart;
   Timer timer;
@@ -19,6 +22,8 @@ class GameSystem {
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
+  
+
 
   GameSystem(PApplet ding_) {
     b = new Background();
@@ -32,6 +37,7 @@ class GameSystem {
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
+ 
   }
 
   void incrementScore() {
@@ -48,7 +54,6 @@ class GameSystem {
     heart.display();
     timer.run();
     map.display();
-
 
     fill(0);
     textSize(24);
@@ -70,6 +75,12 @@ class GameSystem {
         meteorer.remove(meteor);
       }
     }
+    String highscore = String.valueOf(score);
+    String[] list = split(highscore, ' ');
+    println(highscore);
+    saveStrings("highscore.txt", list);
+
+    
   }
   boolean gameOver () {
     if ( dino.liv <= 0 ) return true;
