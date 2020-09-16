@@ -100,7 +100,6 @@ class Dino extends Default {
 
     // Der skal være en maksimum fart hen af x-aksen, som lige nu er på de 3
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
-    if (abs(vel.y) > 10) vel.y = vel.y > 10 ? 10 : -10;
 
     picTimer.update();
 
@@ -133,8 +132,7 @@ class Dino extends Default {
 
     if (keyPressed && keyCode == UP && touchGround) {
       vel.mult(0);
-
-      vel.add(new PVector(0, -speed));
+      vel.add(new PVector(0, -speed * 2));
     }
   }
 }
