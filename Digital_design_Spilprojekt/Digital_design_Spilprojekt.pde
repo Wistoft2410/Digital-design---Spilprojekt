@@ -21,6 +21,14 @@ void draw() {
 
 
 
+<<<<<<< HEAD
+
+  b.display();
+  gameSystem.run();
+>>>>>>> fd83284b591ea72b1eb9a49cf8aeee87a7ab1d53
+=======
+
+
 
   b.display();
   gameSystem.run();

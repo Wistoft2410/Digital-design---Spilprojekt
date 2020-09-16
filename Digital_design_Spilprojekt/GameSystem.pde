@@ -20,7 +20,10 @@ class GameSystem {
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
 <<<<<<< HEAD
+<<<<<<< HEAD
   
+=======
+>>>>>>> fd83284b591ea72b1eb9a49cf8aeee87a7ab1d53
 =======
 >>>>>>> fd83284b591ea72b1eb9a49cf8aeee87a7ab1d53
 
