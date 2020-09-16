@@ -14,19 +14,21 @@ class Dino extends Default {
   float speed;
   float scl;
 
-  PImage dinoMund;
+  PImage dinoMundRight;
+  PImage dinoMundLeft;
 
   Dino() {
     super();
     liv = 3;
 
-    dinoMund = loadImage("../Ressources/dinoMund.png");
+    dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
+    dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
 
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.1);
 
-    scl = (height + width)/50;
+    scl = (height + width)/10;
 
     touchGround = false;
     speed = 3;
@@ -63,8 +65,10 @@ class Dino extends Default {
 
     stroke(0);
     strokeWeight(0);
-    ellipse(loc.x, loc.y, scl, scl);
-
+    imageMode(CENTER);
+    if ( keyCode == RIGHT ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
+    if ( keyCode == LEFT ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    imageMode(CORNER);
   }
 
   void update() {
@@ -110,7 +114,6 @@ class Dino extends Default {
 
     if (keyPressed && keyCode == UP && touchGround) { 
       vel.add(new PVector(0, -speed));
-     image(dinoMund,loc.x,loc.y,scl,scl);
     }
   }
 }
