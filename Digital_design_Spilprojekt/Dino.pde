@@ -3,11 +3,13 @@ class Dino extends Default {
 
   ArrayList<Egg> eggs;
 
+
   PVector loc;
   PVector vel;
   PVector acc;
 
   boolean touchGround, isLeft, isRight, isUp;
+
 
   float speed;
   float scl;
@@ -27,12 +29,12 @@ class Dino extends Default {
     
     picTimer = new Timer(0.33);
 
-    dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
+    dinoMundRight      = loadImage("../Ressources/dinoMundRight.png");
     dinoMundRightDance = loadImage("../Ressources/dinoMundRightDance.png");
-    dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
-    dinoMundLeftDance = loadImage("../Ressources/dinoMundLeftDance.png");
-    dinoBack = loadImage("../Ressources/dinoBack.png");
-    dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
+    dinoMundLeft       = loadImage("../Ressources/dinoMundLeft.png");
+    dinoMundLeftDance  = loadImage("../Ressources/dinoMundLeftDance.png");
+    dinoBack           = loadImage("../Ressources/dinoBack.png");
+    dinoBackDance      = loadImage("../Ressources/dinoBackDance.png");
     
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);

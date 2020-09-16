@@ -1,9 +1,5 @@
-class Meteor {
+class Meteor extends Default {
   PImage muneb = loadImage("../Ressources/Meteor.png");
-
-  PVector loc;
-  PVector vel;
-  PVector acc;
 
   boolean touchGround;
   float meteorSize;
@@ -14,7 +10,7 @@ class Meteor {
 
     loc = new PVector(loc_x, loc_y);
     vel = new PVector(0, 0);
-    acc = new PVector(0, height*0.000167);
+    acc = new PVector(0, height*0.000097);
   }
   
    void update () {

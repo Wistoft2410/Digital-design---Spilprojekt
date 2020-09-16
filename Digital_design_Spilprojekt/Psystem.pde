@@ -1,16 +1,18 @@
 class Psystem {
   int total;
   ArrayList <Particle> particles;
-  PVector start;
+  PVector vandstart;
+  PVector lavastart;
 
-  Psystem(PVector loc) {
+  Psystem(PVector vandloc, PVector lavaloc) {
     total = 100;
-    start = loc.copy();
+    vandstart = vandloc.copy();
+    lavastart = lavaloc.copy();
     particles = new ArrayList<Particle>();
   }
 
   void add() {
-    particles.add(new Particle(start));
+    particles.add(new Particle(vandstart,lavastart));
  
   }
   void run() {

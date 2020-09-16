@@ -47,14 +47,13 @@ class Timer {
 
      // println("Eggs");
 
-
-
       gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
     }
     if (!deathMode) {
       fill(200, 0, 0);
 
      // println("No eggs");
+      gameSystem.meteorer.add(new Meteor(random(0, width), 0));
 
     }
     text((int)sek, loc.x, loc.y);
