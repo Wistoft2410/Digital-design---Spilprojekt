@@ -53,6 +53,7 @@ class Timer {
       fill(200, 0, 0);
 
      // println("No eggs");
+      gameSystem.meteorer.add(new Meteor(random(0, width), 0));
 
     }
     text((int)sek, loc.x, loc.y);

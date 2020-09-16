@@ -8,7 +8,7 @@ class Background {
   Background() {
     vandloc = new PVector(-1, height/1.9);
     soloc = new PVector (100, height/1.40);
-    ps = new Psystem(new PVector(60, 566));
+    ps = new Psystem(new PVector(60, 566), new PVector(447, 480));
   }
 
   void display() {
@@ -16,7 +16,6 @@ class Background {
     strokeWeight(0);
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
 
-    // println(frameRate);
 
     //planet med måne i omkreds
     fill(100);
