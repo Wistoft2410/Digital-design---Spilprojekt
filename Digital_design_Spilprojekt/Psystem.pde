@@ -9,11 +9,12 @@ class Psystem {
     particles = new ArrayList<Particle>();
   }
 
-  void ad() {
+  void add() {
     particles.add(new Particle(start));
  
   }
   void run() {
+    add();
     for (int i = particles.size()-1; i >= 0; i--) {
       Particle p = particles.get(i);
       p.run();

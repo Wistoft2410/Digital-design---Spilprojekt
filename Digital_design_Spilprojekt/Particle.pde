@@ -20,7 +20,7 @@ class Particle extends Default {
   }
 
   void display() {
-    //noStroke();
+    noStroke();
     fill(35, 137, 218, lifespan);
     ellipse(loc.x, loc.y, 10, 10);
   }

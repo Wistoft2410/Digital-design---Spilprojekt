@@ -3,9 +3,12 @@ class Background {
   PVector vandloc;
   PVector soloc;
 
+  Psystem ps;
+
   Background() {
     vandloc = new PVector(-1, height/1.9);
     soloc = new PVector (100, height/1.40);
+    ps = new Psystem(new PVector(60, 566));
   }
 
   void display() {
@@ -62,6 +65,9 @@ class Background {
     vertex(200, 100);
     endShape();
     popMatrix();
+    
+    //Partikel system
+    ps.run();
 
   }
 }

@@ -1,13 +1,12 @@
 import processing.sound.*;
 GameSystem gameSystem;
-Background b;
+
 
 
 void setup() {
   frameRate(60);
   size(800, 800);
   gameSystem = new GameSystem(this);
-  b = new Background();
 }
 
 void draw() {
@@ -17,7 +16,6 @@ void draw() {
 
 
 
-  b.display();
   gameSystem.run();
 }
 
