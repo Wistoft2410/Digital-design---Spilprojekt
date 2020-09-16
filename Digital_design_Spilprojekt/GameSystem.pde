@@ -90,9 +90,9 @@ class GameSystem {
     println(highscore);
     saveStrings("highscore.txt", list);
     list = reverse( sort(list));
+    
 
-
-    println("highscore " + list);
+    println("highscore " + list[0]);
   }
   boolean gameOver () {
     if ( dino.liv <= 0 ) return true;
