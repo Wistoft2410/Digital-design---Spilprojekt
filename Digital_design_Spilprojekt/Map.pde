@@ -1,25 +1,27 @@
 class Map {
   PImage platform;
 
-  PVector loc;
-  PVector vel;
-  PVector acc;
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+
 
   Map() {
-    platform = loadImage("../Ressources/Platform.png");
+        platform = loadImage("../Ressources/Platform.png");
 
-    loc = new PVector(400,700);
-    vel = new PVector(0, 0);
-    acc = new PVector(width*0.000167, 0);
+    location = new PVector(mouseX, mouseY);
+    velocity = new PVector(1, 0);
     
   }
 
   void update() {
-    //vel.add(acc);
-    loc.add(vel);
+    location.add(velocity);
   }
 
+
   void display() {
-    image(platform,loc.x,loc.y,300,100);
+    noStroke();
+    fill(255);
+    image(platform,location.x,location.y,300,100);
   }
 }

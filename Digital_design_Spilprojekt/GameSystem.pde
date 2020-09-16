@@ -23,6 +23,8 @@ class GameSystem {
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
+  ArrayList<Map> m;
+
 
 
   GameSystem(PApplet ding_) {
@@ -31,15 +33,14 @@ class GameSystem {
 
     score = 0;
 
-    this.map = new Map();
+    this.m = new ArrayList<Map>();
     this.eggs = new ArrayList<Egg>();
     this.meteorer = new ArrayList<Meteor>();
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
-    
-     String[] list = loadStrings("highscore.txt");
-    
+
+    String[] list = loadStrings("highscore.txt");
   }
 
   void incrementScore() {
@@ -78,13 +79,18 @@ class GameSystem {
       }
     }
 
+    for (Map m : m) {
+      m.display();  
+      m.update();
+    }
+
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
     println(highscore);
     saveStrings("highscore.txt", list);
     list = reverse( sort(list));
 
-   
+
     println("highscore " + list);
   }
   boolean gameOver () {
