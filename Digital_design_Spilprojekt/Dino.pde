@@ -25,7 +25,7 @@ class Dino extends Default {
     super();
     liv = 3;
     
-    picTimer = new Timer(0.5);
+    picTimer = new Timer(0.33);
 
     dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
     dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
