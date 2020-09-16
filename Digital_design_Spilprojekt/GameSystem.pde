@@ -1,7 +1,7 @@
 import processing.sound.*;
 /*
  GameSystem klassen indeholder alle spil objekter
-
+ 
  og holder styr på selve spil systemet
  (point, liv)
  */
@@ -13,22 +13,21 @@ class GameSystem {
   Timer timer;
 
   Psystem ps;
- SoundFile ding;
+  SoundFile ding;
   int score;
 
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
-  
-    int score;
+
 
 
   GameSystem(PApplet ding_) {
-    ding = new SoundFile(ding_,"../Ressources/Ding.mp3");
+    ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
 
     score = 0;
     this.eggs = new ArrayList<Egg>();
-		// Bliver ikke brugt endnu
+    // Bliver ikke brugt endnu
     this.meteorer = new ArrayList<Meteor>();
 
     this.dino = new Dino();
@@ -46,7 +45,7 @@ class GameSystem {
     //println(score);
     dino.update(eggs);
     heart.display();
-      timer.run();
+    timer.run();
 
     ps.ad();
     ps.run();
@@ -70,6 +69,5 @@ class GameSystem {
     //meteorer.remove(meteor);
     //}
     //}
-
   }
 }
