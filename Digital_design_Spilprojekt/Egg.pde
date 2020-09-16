@@ -1,4 +1,5 @@
 class Egg extends Default {
+  // Vi bruger ikke billedet til noget !!!
   PImage img; 
 
   float lifespan;
@@ -10,7 +11,8 @@ class Egg extends Default {
   float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
-    img = loadImage("../Ressources/Egg.png");
+    // Vi bruger ikke billedet til noget !!!
+    //img = loadImage("../Ressources/Egg.png");
     lifespan = 255;
     swallowed = false;
 
@@ -26,7 +28,8 @@ class Egg extends Default {
   void display () {
     // Fjerner alpha'en så det ser ud som om den forsvinder lidt efter lidt.
     // Dette sker kun når swallow() metoden er blevet kaldt
-    if (swallowed) lifespan -= 50;
+    if (swallowed) lifespan -= 5;
+    noStroke();
     fill(255, 223, 0, lifespan);
     ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
   }
