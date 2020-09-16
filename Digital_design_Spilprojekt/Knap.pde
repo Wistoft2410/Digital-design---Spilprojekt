@@ -11,10 +11,10 @@ class Knap {
   float kant;
 
   boolean on;
-  
+
   String name;
 
-  Knap (float loc_x, float loc_y, String name_, float widthSize_,float heightSize_) {
+  Knap (float loc_x, float loc_y, String name_, float widthSize_, float heightSize_) {
     loc= new PVector(loc_x, loc_y);
     r = 0;
     g = 200;
@@ -38,15 +38,23 @@ class Knap {
     fill(0);
     textAlign(CENTER);
     textSize((heightSize+widthSize)*0.1);
-    text(name,loc.x,loc.y,widthSize,heightSize);
+    text(name, loc.x, loc.y, widthSize, heightSize);
   }
 
+
+  void farveSkift() {
+    if ( on ) {
+      r = 0;
+      g = 200;
+    } else if ( !on ) {
+      r = 200;
+      g = 0;
+    }
+  }
 
   boolean clicked () {
     if (mousePressed && mouseX > loc.x - widthSize*0.5 && mouseX < loc.x + widthSize*0.5 && mouseY > loc.y - heightSize*0.5 && mouseY < loc.y + heightSize*0.5 && on ) {
       on = false;
-      r = 200;
-      g = 0;
       return true;
     } else return false;
   }

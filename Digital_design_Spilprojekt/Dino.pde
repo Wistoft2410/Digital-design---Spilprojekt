@@ -20,22 +20,23 @@ class Dino extends Default {
   PImage dinoMundLeftDance;
   PImage dinoBack;
   PImage dinoBackDance;
-  
+
   Timer picTimer;
-  
+
   Dino() {
     super();
     liv = 3;
-    
+
     picTimer = new Timer(0.33);
 
     dinoMundRight      = loadImage("../Ressources/dinoMundRight.png");
     dinoMundRightDance = loadImage("../Ressources/dinoMundRightDance.png");
-    dinoMundLeft       = loadImage("../Ressources/dinoMundLeft.png");
-    dinoMundLeftDance  = loadImage("../Ressources/dinoMundLeftDance.png");
-    dinoBack           = loadImage("../Ressources/dinoBack.png");
-    dinoBackDance      = loadImage("../Ressources/dinoBackDance.png");
-    
+
+    dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
+    dinoMundLeftDance = loadImage("../Ressources/dinoMundLeftDance.png");
+    dinoBack = loadImage("../Ressources/dinoBack.png");
+    dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
+
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.3);
@@ -67,6 +68,11 @@ class Dino extends Default {
         egg.swallow();
         gameSystem.incrementScore();
         gameSystem.ding.play();
+      }
+
+      if (actualDist < minimumDist && hitAlready && gameSystem.timer.deathMode) {
+        liv--;
+        gameSystem.heart.liv--;
       }
     }
   }
@@ -105,7 +111,6 @@ class Dino extends Default {
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
 
     picTimer.update();
-
   }
 
   void run(ArrayList<Egg> eggs) {
