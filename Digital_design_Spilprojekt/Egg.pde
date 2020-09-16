@@ -1,4 +1,5 @@
 class Egg extends Default {
+  // Vi bruger ikke billedet til noget !!!
   PImage img; 
 
   float lifespan;
@@ -10,7 +11,8 @@ class Egg extends Default {
   float eggSizeY = scl;
 
   Egg (float loc_x, float loc_y) {
-    img = loadImage("../Ressources/Egg.png");
+    // Vi bruger ikke billedet til noget !!!
+    //img = loadImage("../Ressources/Egg.png");
     lifespan = 255;
     swallowed = false;
 
