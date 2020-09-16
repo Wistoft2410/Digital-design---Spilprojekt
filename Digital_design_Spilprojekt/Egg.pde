@@ -28,7 +28,7 @@ class Egg extends Default {
   void display () {
     // Fjerner alpha'en så det ser ud som om den forsvinder lidt efter lidt.
     // Dette sker kun når swallow() metoden er blevet kaldt
-    if (swallowed) lifespan -= 50;
+    if (swallowed) lifespan -= 5;
     noStroke();
     fill(255, 223, 0, lifespan);
     ellipse(loc.x, loc.y, eggSizeX, eggSizeY);

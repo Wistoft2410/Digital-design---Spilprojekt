@@ -42,6 +42,9 @@ class Dino extends Default {
       boolean hitAlready = !egg.swallowed;
 
       if (actualDist < minimumDist && hitAlready) {
+        //Ægget står stille når man får point
+        egg.acc.mult(0);
+        egg.vel.mult(0);
         // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
         egg.swallow();
         gameSystem.incrementScore();
