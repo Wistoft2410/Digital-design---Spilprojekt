@@ -15,7 +15,7 @@ void draw() {
 }
 
 void mousePressed () {
-  gameSystem.eggs.add(new Egg(random(0, width), 0));
+  //gameSystem.eggs.add(new Egg(random(0, width), 0));
   println(mouseX, mouseY);
 }
 

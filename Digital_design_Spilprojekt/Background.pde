@@ -16,7 +16,6 @@ class Background {
     strokeWeight(0);
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
 
-    // println(frameRate);
 
     //planet med måne i omkreds
     fill(100);
