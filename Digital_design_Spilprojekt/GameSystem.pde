@@ -16,28 +16,30 @@ class GameSystem {
   Background b;
   Map map;
   Psystem ps;
-  
+
   SoundFile ding;
-  
+
   int score;
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
-  
+
 
   GameSystem(PApplet ding_) {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
-    
+
     score = 0;
-    
+
     this.map = new Map();
     this.eggs = new ArrayList<Egg>();
     this.meteorer = new ArrayList<Meteor>();
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
- 
+    
+     String[] list = loadStrings("highscore.txt");
+    
   }
 
   void incrementScore() {
@@ -75,12 +77,15 @@ class GameSystem {
         meteorer.remove(meteor);
       }
     }
+
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
     println(highscore);
     saveStrings("highscore.txt", list);
+    list = reverse( sort(list));
 
-    
+   
+    println("highscore " + list);
   }
   boolean gameOver () {
     if ( dino.liv <= 0 ) return true;
