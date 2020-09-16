@@ -1,5 +1,6 @@
 class Particle extends Default {
   float lifespan; 
+  float lavaspan;
 
   Particle(PVector one, PVector two) {
     acc = new PVector(0, 0.05);
@@ -8,6 +9,7 @@ class Particle extends Default {
     loc2 = two.copy();
     
     lifespan = 255.0;
+    lavaspan = 1;
   }
 
   void run() {
@@ -19,14 +21,15 @@ class Particle extends Default {
     vel.add(acc);
     loc.add(vel);
     loc2.add(vel);
-    lifespan -= 4.0;
+    lifespan -= 3.0;
+    lavaspan += 10;
   }
 
   void display() {
     noStroke();
     fill(35, 137, 218, lifespan);
-    ellipse(loc.x, loc.y, 3, 3);
-    fill(207,16,32);
+    ellipse(loc.x, loc.y, 4, 4);
+    fill(207,16,32, lavaspan);
     ellipse(loc2.x, loc2.y, 10, 10);
   }
 

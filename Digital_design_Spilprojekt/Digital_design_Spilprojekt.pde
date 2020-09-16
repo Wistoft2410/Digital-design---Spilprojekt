@@ -15,7 +15,7 @@ void setup() {
 
 void draw() {
 
-  background(200); 
+  background(161, 204, 204, 100); 
   game();
 
   

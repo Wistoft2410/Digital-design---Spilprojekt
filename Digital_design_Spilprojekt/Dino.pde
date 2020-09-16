@@ -28,11 +28,10 @@ class Dino extends Default {
 
     dinoMundRight      = loadImage("../Ressources/dinoMundRight.png");
     dinoMundRightDance = loadImage("../Ressources/dinoMundRightDance.png");
-
-    dinoMundLeft = loadImage("../Ressources/dinoMundLeft.png");
-    dinoMundLeftDance = loadImage("../Ressources/dinoMundLeftDance.png");
-    dinoBack = loadImage("../Ressources/dinoBack.png");
-    dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
+    dinoMundLeft       = loadImage("../Ressources/dinoMundLeft.png");
+    dinoMundLeftDance  = loadImage("../Ressources/dinoMundLeftDance.png");
+    dinoBack           = loadImage("../Ressources/dinoBack.png");
+    dinoBackDance      = loadImage("../Ressources/dinoBackDance.png");
 
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
@@ -84,11 +83,11 @@ class Dino extends Default {
 
     //Dino billede
     imageMode(CENTER);
-    if (keyCode == RIGHT && picTimer.deathMode) image(dinoMundRight ,loc.x,loc.y,scl,scl);
+    if (keyCode == RIGHT && picTimer.deathMode)       image(dinoMundRight ,loc.x,loc.y,scl,scl);
     else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
-    else if (keyCode == LEFT && picTimer.deathMode) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
-    else if (keyCode == LEFT && !picTimer.deathMode) image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
-    else if (picTimer.deathMode) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    else if (keyCode == LEFT && picTimer.deathMode)   image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else if (keyCode == LEFT && !picTimer.deathMode)  image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
+    else if (picTimer.deathMode)  image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
     else if (!picTimer.deathMode) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
     else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
 

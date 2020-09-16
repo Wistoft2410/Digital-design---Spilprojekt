@@ -15,15 +15,15 @@ class GameSystem {
   Timer timer;
   Background b;
   Map map;
-   
   Psystem ps;
+  
   SoundFile ding;
+  
   int score;
 
   ArrayList<Egg> eggs;
   ArrayList<Meteor> meteorer;
   
-
 
   GameSystem(PApplet ding_) {
     b = new Background();
