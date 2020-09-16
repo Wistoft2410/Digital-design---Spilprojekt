@@ -21,7 +21,13 @@ void mousePressed () {
 }
 
 void keyPressed() {
+  gameSystem.dino.recordKeys(keyCode, true);
   restart();
+}
+
+// Det her er for Dino klasen så den kan bevæge sig bedre!
+void keyReleased() {
+  gameSystem.dino.recordKeys(keyCode, false);
 }
 
 void restart () {
