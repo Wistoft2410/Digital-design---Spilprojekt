@@ -29,7 +29,6 @@ class GameSystem {
 	}
 
   void run() {
-		//println(score);
     dino.run(eggs);
     timer.run();
     heart.display();
