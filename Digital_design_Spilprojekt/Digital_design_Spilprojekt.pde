@@ -13,26 +13,10 @@ void setup() {
 void draw() {
   background(200);
 
-<<<<<<< HEAD
+
   b.display();
   gameSystem.update();
 
-=======
-
-
-
-<<<<<<< HEAD
-
-  b.display();
-  gameSystem.run();
->>>>>>> fd83284b591ea72b1eb9a49cf8aeee87a7ab1d53
-=======
-
-
-
-  b.display();
-  gameSystem.run();
->>>>>>> fd83284b591ea72b1eb9a49cf8aeee87a7ab1d53
 }
 
 void mousePressed () {
