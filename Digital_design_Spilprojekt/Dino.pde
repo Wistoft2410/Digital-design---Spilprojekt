@@ -1,6 +1,4 @@
 class Dino extends Default {
-
-  
   int liv;
 
   ArrayList<Egg> eggs;
@@ -9,7 +7,7 @@ class Dino extends Default {
   PVector vel;
   PVector acc;
 
-  boolean touchGround;
+  boolean touchGround, isLeft, isRight, isUp;
 
   float speed;
   float scl;
@@ -38,11 +36,12 @@ class Dino extends Default {
     
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
-    acc = new PVector(0, 0.1);
+    acc = new PVector(0, 0.3);
 
     scl = (height + width)/10;
 
-    touchGround = false;
+    touchGround = isLeft = isRight = isUp  = false;
+
     speed = 3;
   }
 
@@ -77,20 +76,22 @@ class Dino extends Default {
 
     stroke(0);
     strokeWeight(0);
+
     //Dino billede
     imageMode(CENTER);
-    if ( keyCode == RIGHT && picTimer.deathMode ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == RIGHT && !picTimer.deathMode ) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == LEFT && picTimer.deathMode ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == LEFT && !picTimer.deathMode ) image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
-    else if ( picTimer.deathMode ) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
-    else if ( !picTimer.deathMode ) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
+    if (keyCode == RIGHT && picTimer.deathMode) image(dinoMundRight ,loc.x,loc.y,scl,scl);
+    else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
+    else if (keyCode == LEFT && picTimer.deathMode) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
+    else if (keyCode == LEFT && !picTimer.deathMode) image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
+    else if (picTimer.deathMode) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    else if (!picTimer.deathMode) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
     else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+
     imageMode(CORNER);
   }
 
   void update() {
-    move();
+    movePlayer();
 
     vel.add(acc);
     loc.add(vel);
@@ -125,14 +126,32 @@ class Dino extends Default {
     return liv <= 0;
   }
 
-  void move() {
-    if (keyPressed && keyCode == LEFT) vel.add(new PVector(-speed, 0));
-    else if (keyPressed && keyCode == RIGHT) vel.add(new PVector(speed, 0));
+  // Bliver nødt til at have denne funktion da processing's "key input" system ikke virker så godt
+  // (Processing kan åbenbart ikke optage flere en knap adgangen ser det ud til)
+	void recordKeys(int keyNum, boolean b) {
+    switch (keyNum) {
+      case LEFT:
+        isLeft = b;
+        break;
+      case RIGHT:
+        isRight = b;
+        break;
+      case UP:
+        isUp = b;
+        break;
+      // Der er ikke et "default" statement i denne switch.
+      // Da jeg ikke ved hvad jeg skal i det statement
+    }
+	}
+
+  void movePlayer() {
+    if (isLeft) vel.add(new PVector(-speed, 0));
+    else if (isRight) vel.add(new PVector(speed, 0));
     else vel.x = 0;
 
-    if (keyPressed && keyCode == UP && touchGround) {
+    if (isUp && touchGround) {
       vel.mult(0);
-      vel.add(new PVector(0, -speed * 2));
+      vel.add(new PVector(0, -speed * 3.0));
     }
   }
 }
