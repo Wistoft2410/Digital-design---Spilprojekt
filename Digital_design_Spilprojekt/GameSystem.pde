@@ -40,7 +40,6 @@ class GameSystem {
     update();
   }
 
-
   void update() {
     b.display();
     dino.run(eggs);
@@ -60,15 +59,14 @@ class GameSystem {
       if (egg.loc.y > height) 
         eggs.remove(egg);
     }
-    
-    
+
+
     for (Meteor meteor : (ArrayList<Meteor>) meteorer.clone()) {
-    meteor.run();
-    if (meteor.loc.y > height) {
-    meteorer.remove(meteor);
+      meteor.run();
+      if (meteor.loc.y > height) {
+        meteorer.remove(meteor);
+      }
     }
-    }
-    
   }
   boolean gameOver () {
     if ( dino.liv <= 0 ) return true;

@@ -17,7 +17,7 @@ void draw() {
 
 void mousePressed () {
   //gameSystem.eggs.add(new Egg(random(0, width), 0));
-  println(mouseX, mouseY);
+  //println(mouseX, mouseY);
 }
 
 void keyPressed() {
@@ -38,4 +38,9 @@ void game() {
   } else if ( !menu.startKnap.on ) {
     gameSystem.run();
   }
+  if ( gameSystem.gameOver() ) {
+    gameSystem = new GameSystem(this);
+    menu.startKnap.on = true;
+  }
+  
 }

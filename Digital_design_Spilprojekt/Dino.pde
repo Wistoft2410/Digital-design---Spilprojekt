@@ -1,6 +1,6 @@
 class Dino extends Default {
 
-  
+
   int liv;
 
   ArrayList<Egg> eggs;
@@ -16,13 +16,13 @@ class Dino extends Default {
   PImage dinoMundLeftDance;
   PImage dinoBack;
   PImage dinoBackDance;
-  
+
   Timer picTimer;
-  
+
   Dino() {
     super();
     liv = 3;
-    
+
     picTimer = new Timer(0.33);
 
     dinoMundRight = loadImage("../Ressources/dinoMundRight.png");
@@ -31,7 +31,7 @@ class Dino extends Default {
     dinoMundLeftDance = loadImage("../Ressources/dinoMundLeftDance.png");
     dinoBack = loadImage("../Ressources/dinoBack.png");
     dinoBackDance = loadImage("../Ressources/dinoBackDance.png");
-    
+
     loc = new PVector(width/3, height/3);
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.1);
@@ -63,6 +63,11 @@ class Dino extends Default {
         gameSystem.incrementScore();
         gameSystem.ding.play();
       }
+
+      if (actualDist < minimumDist && hitAlready && gameSystem.timer.deathMode) {
+        liv--;
+        gameSystem.heart.liv--;
+      }
     }
   }
 
@@ -75,13 +80,13 @@ class Dino extends Default {
     strokeWeight(0);
     //Dino billede
     imageMode(CENTER);
-    if ( keyCode == RIGHT && picTimer.deathMode ) image(dinoMundRight ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == RIGHT && !picTimer.deathMode ) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == LEFT && picTimer.deathMode ) image(dinoMundLeft ,loc.x,loc.y,scl,scl);
-    else if ( keyCode == LEFT && !picTimer.deathMode ) image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
-    else if ( picTimer.deathMode ) image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
-    else if ( !picTimer.deathMode ) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
-    else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    if ( keyCode == RIGHT && picTimer.deathMode ) image(dinoMundRight, loc.x, loc.y, scl, scl);
+    else if ( keyCode == RIGHT && !picTimer.deathMode ) image(dinoMundRightDance, loc.x, loc.y, scl, scl);
+    else if ( keyCode == LEFT && picTimer.deathMode ) image(dinoMundLeft, loc.x, loc.y, scl, scl);
+    else if ( keyCode == LEFT && !picTimer.deathMode ) image(dinoMundLeftDance, loc.x, loc.y, scl, scl);
+    else if ( picTimer.deathMode ) image(dinoBack, loc.x, loc.y, scl*0.6, scl);
+    else if ( !picTimer.deathMode ) image(dinoBackDance, loc.x, loc.y, scl*0.6, scl);
+    else image(dinoBack, loc.x, loc.y, scl*0.6, scl);
     imageMode(CORNER);
   }
 
@@ -98,7 +103,6 @@ class Dino extends Default {
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
 
     picTimer.update();
-
   }
 
   void run(ArrayList<Egg> eggs) {
