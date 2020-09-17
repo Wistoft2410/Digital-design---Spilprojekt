@@ -10,17 +10,8 @@ void setup() {
 }
 
 void draw() {
-
   background(161, 204, 204, 100); 
   game();
-}
-
-void mousePressed () {
-  //gameSystem.eggs.add(new Egg(random(0, width), 0));
-  //println(mouseX, mouseY);
-  
-
-  
 }
 
 void keyPressed() {
@@ -40,16 +31,12 @@ void restart () {
   }
 }
 
-
 void game() {
-  if (menu.startKnap.on) {
-    menu.update();
-  } else if ( !menu.startKnap.on ) {
-    gameSystem.run();
-  }
-  if ( gameSystem.gameOver() ) {
+  if (menu.startKnap.on) menu.update();
+  else if (!menu.startKnap.on) gameSystem.run();
+
+  if (gameSystem.gameOver()) {
     gameSystem = new GameSystem(this);
     menu.startKnap.on = true;
   }
-  
 }

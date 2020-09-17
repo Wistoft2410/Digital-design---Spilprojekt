@@ -1,12 +1,9 @@
 class Dino extends Default {
   int liv;
 
-  ArrayList<Egg> eggs;
-
-
+  ArrayList<Default> projectiles;
 
   boolean touchGround, isLeft, isRight, isUp;
-
 
   float speed;
   float scl;
@@ -44,31 +41,50 @@ class Dino extends Default {
     speed = 3;
   }
 
-  void collisionWithEggs(ArrayList<Egg> eggs) {
-    for (Egg egg : eggs) {
-      // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
-      // Vi må lige finde ud af hvordan det kan gøres bedre!
-      // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
-      float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 3;
-      float actualDist  = dist(egg.loc.x, egg.loc.y, loc.x, loc.y);
+  void collisionWithDefaults() {
+    for (Default projectile : projectiles) {
+      float actualDist  = dist(projectile.loc.x, projectile.loc.y, loc.x, loc.y);
 
-      // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
-      // for at se om Dino'en har ramt ægget eller ej!
-      boolean hitAlready = !egg.swallowed;
+      if (projectile instanceof Egg) {
+        Egg egg = (Egg) projectile;
+        // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
+        // Vi må lige finde ud af hvordan det kan gøres bedre!
+        // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
+        float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 3;
 
-      if (actualDist < minimumDist && hitAlready) {
-        //Ægget står stille når man får point
-        egg.acc.mult(0);
-        egg.vel.mult(0);
-        // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
-        egg.swallow();
-        gameSystem.incrementScore();
-        gameSystem.ding.play();
-      }
+        // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
+        // for at se om Dino'en har spist ægget eller ej!
+        boolean hitAlready = egg.swallowed;
 
-      if (actualDist < minimumDist && hitAlready && gameSystem.timer.deathMode) {
-        liv--;
-        gameSystem.heart.liv--;
+        if (actualDist < minimumDist && !hitAlready) {
+          //Ægget står stille når man får point
+          egg.acc.mult(0);
+          egg.vel.mult(0);
+
+          // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
+          egg.setSwallow(true);
+          gameSystem.incrementScore();
+          gameSystem.ding.play();
+        }
+
+      } else if (projectile instanceof Meteor) {
+        Meteor meteor = (Meteor) projectile;
+        // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
+        float minimumDist = meteor.size / 2 + scl / 3;
+        // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
+        // for at se om Dino'en har spist ægget eller ej!
+        boolean hitAlready = meteor.hit;
+        
+        if (actualDist < minimumDist && !hitAlready) {
+          //Ægget står stille når man får point
+          meteor.acc.mult(0);
+          meteor.vel.mult(0);
+
+          // Vi skal selvfølgelig også miste liv og sørge for at meteoren forsvinder!
+          meteor.setHit(true);
+          gameSystem.heart.liv--;
+          liv--;
+        }
       }
     }
   }
@@ -87,8 +103,8 @@ class Dino extends Default {
     else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
     else if (keyCode == LEFT && picTimer.deathMode)   image(dinoMundLeft ,loc.x,loc.y,scl,scl);
     else if (keyCode == LEFT && !picTimer.deathMode)  image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
-    else if (picTimer.deathMode)  image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
-    else if (!picTimer.deathMode) image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
+    else if (picTimer.deathMode)                      image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    else if (!picTimer.deathMode)                     image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
     else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
 
     imageMode(CORNER);
@@ -101,7 +117,7 @@ class Dino extends Default {
     loc.add(vel);
 
     hitGround();
-    collisionWithEggs(eggs);
+    collisionWithDefaults();
 
     // Der skal være en maksimum fart hen af x-aksen, som lige nu er på de 3
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
@@ -109,10 +125,10 @@ class Dino extends Default {
     picTimer.update();
   }
 
-  void run(ArrayList<Egg> eggs) {
-    // Jeg bliver nødt til at bruge "this." her, da jeg gerne vil referere til "eggs"
+  void run(ArrayList<Default> projectiles) {
+    // Jeg bliver nødt til at bruge "this." her, da jeg gerne vil referere til "projectiles"
     // variablen i det globale scope, håber i forstår ellers spørg i bare!
-    this.eggs = eggs;
+    this.projectiles = projectiles;
 
     update();
     display();

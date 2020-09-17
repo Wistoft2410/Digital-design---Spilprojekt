@@ -12,7 +12,6 @@ class Egg extends Default {
 
   Egg (float loc_x, float loc_y) {
     lifespan = 255;
-    swallowed = false;
 
     eggSizeX = width/50;
     eggSizeY = height/30;
@@ -42,7 +41,7 @@ class Egg extends Default {
     display();
   }
 
-  void swallow() {
-    swallowed = true;
+  void setSwallow(boolean swallowed) {
+    this.swallowed = swallowed;
   }
 }

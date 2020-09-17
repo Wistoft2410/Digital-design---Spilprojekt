@@ -1,11 +1,13 @@
 class Meteor extends Default {
-  PImage muneb = loadImage("../Ressources/Meteor.png");
+  PImage meteor = loadImage("../Ressources/Meteor.png");
 
+	boolean hit;
   boolean touchGround;
-  float meteorSize;
+
+  float size;
 
   Meteor (float loc_x, float loc_y) {
-    meteorSize = width/20;
+    size = width/20;
     touchGround = false;
 
     loc = new PVector(loc_x, loc_y);
@@ -23,9 +25,13 @@ class Meteor extends Default {
     display();
 	}	
 
+	void setHit(boolean hit) {
+		this.hit = hit;
+	}
+
   void display () {
     noStroke();
     fill(220);
-    image(muneb,loc.x, loc.y, meteorSize, meteorSize);
+    image(meteor,loc.x, loc.y, size, size);
   }
 }

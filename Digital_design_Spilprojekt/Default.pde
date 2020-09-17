@@ -25,4 +25,8 @@ class Default {
 
     scl = (height+width)*0.1;
   }
+
+  void run() {
+    println("running a default object");
+  }
 }

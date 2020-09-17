@@ -42,25 +42,23 @@ class Timer {
     textAlign(CENTER);
     textSize(timerSize);
 
-    if (deathMode) { 
-      fill(200, 0, 0);
 
-     // println("Eggs");
+    // Hvis vi IKKE er i death mode så skal vi tilføje æg!
+    if (!deathMode) { 
 
-    //  gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
-    
-       gameSystem.meteorer.add(new Meteor(random(0, width)*frameRate, 0));
-    }
-    if (!deathMode) {
       fill(0, 200, 0);
+      gameSystem.projectiles.add(new Egg(random(0, width) * frameCount/10, 0));
+    }
 
-     // println("No eggs");
-      //gameSystem.meteorer.add(new Meteor(random(0, width)*frameCount/10, 0));
-      
-      gameSystem.eggs.add(new Egg(random(0, width)*frameRate, 0));
+
+    // Hvis vi ER i death mode så skal vi tilføje meteorer!
+    if (deathMode) {
+      fill(200, 0, 0);
+      gameSystem.projectiles.add(new Meteor(random(0, width) * frameCount/50, 0));
 
     }
-    text((int)sek, loc.x, loc.y);
+
+    text((int) sek, loc.x, loc.y);
   }
 
   void run() {
@@ -70,20 +68,18 @@ class Timer {
 
   void countDown() {
     sek -= 0.0167;
-   /* 
-    a--;
-    if (a < 0) {
-      a = frameRate;
-      sek -= 1;
-    }*/
 
-    if ( sek <= 0 && !deathMode ) {
+    /*
+     a--;
+     if (a < 0) {
+       a = frameRate;
+       sek -= 1;
+     }
+    */
+    if (sek <= 0) {
+
       sek = startSek;
-      deathMode = true;
+      deathMode = !deathMode;
     } 
-    if ( sek <= 0 && deathMode ) {
-      sek = startSek;
-      deathMode = false;
-    }
   }
 }
