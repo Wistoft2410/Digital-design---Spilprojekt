@@ -15,9 +15,9 @@ void draw() {
   game();
 }
 
-/*void mousePressed() {
+void mousePressed() {
   println(mouseX, mouseY);
-}*/
+}
 
 void keyPressed() {
   gameSystem.dino.recordKeys(keyCode, true);
