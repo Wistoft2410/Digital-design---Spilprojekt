@@ -17,21 +17,25 @@ class GameSystem {
 
   SoundFile ding;
   SoundFile moan;
+  SoundFile music;
 
-  int score;
-  int hs;
+  int score; //score
+  int hs; //highscore
+  int total; //antal platforme i alt
 
   ArrayList<Default> projectiles;
-  ArrayList<Map> m;
+  ArrayList<Map> map;
 
 
-  GameSystem(PApplet ding_, PApplet moan_) {
+  GameSystem(PApplet ding_, PApplet moan_, PApplet music_) {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
     moan = new SoundFile(moan_, "../Ressources/Moan.wav");
+    music = new SoundFile(music_,"../Ressources/Musik.wav");
+    
     score = 0;
 
-    this.m = new ArrayList<Map>();
+    map = new ArrayList<Map>();
     projectiles = new ArrayList<Default>();
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
@@ -48,7 +52,7 @@ class GameSystem {
     update();
   }
 
-  void update() {
+  void update() {    
     changeTime();
     b.display();
     heart.display();
@@ -77,17 +81,26 @@ class GameSystem {
       projectile.run();
     }
 
-    for (Map m : (ArrayList<Map>) m.clone()) m.run();
+    total = map.size();
+    if (total < 2) {
+    map.add(new Map());
+  }
+  for (int i = map.size()-1; i >=0; i--) {
+    Map m = map.get(i);
+    m.run();
+    if (m.out()) {
+      map.remove(i);
+    }
+  }
 
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
-    //println(highscore);
     saveStrings("highscore.txt", list);
     list = reverse( sort(list));
     hs = int(highscore);
 
-    if (hs <= score) {
-      println("highscore " + hs);
+    if (hs <= score){ 
+      //println("highscore " + hs);
     }
   }
 

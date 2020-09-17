@@ -6,7 +6,6 @@ class Default {
   PVector vel;
   PVector vel2;
   PVector acc;
-  
 
   float scl;
 
