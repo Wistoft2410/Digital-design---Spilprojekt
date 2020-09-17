@@ -49,7 +49,6 @@ class Dino extends Default {
         Egg egg = (Egg) projectile;
         // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
         // Vi må lige finde ud af hvordan det kan gøres bedre!
-        // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
         float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 3;
 
         // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
@@ -102,12 +101,12 @@ class Dino extends Default {
 
     //Dino billede
     imageMode(CENTER);
-    if (keyCode == RIGHT && picTimer.deathMode)       image(dinoMundRight ,loc.x,loc.y,scl,scl);
-    else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance ,loc.x,loc.y,scl,scl);
-    else if (keyCode == LEFT && picTimer.deathMode)   image(dinoMundLeft ,loc.x,loc.y,scl,scl);
-    else if (keyCode == LEFT && !picTimer.deathMode)  image(dinoMundLeftDance ,loc.x,loc.y,scl,scl);
-    else if (picTimer.deathMode)                      image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
-    else if (!picTimer.deathMode)                     image(dinoBackDance ,loc.x,loc.y,scl*0.6,scl);
+    if (keyCode == RIGHT && picTimer.deathMode)       image(dinoMundRight, loc.x, loc.y, scl, scl);
+    else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance, loc.x, loc.y, scl, scl);
+    else if (keyCode == LEFT && picTimer.deathMode)   image(dinoMundLeft, loc.x, loc.y, scl, scl);
+    else if (keyCode == LEFT && !picTimer.deathMode)  image(dinoMundLeftDance, loc.x, loc.y, scl, scl);
+    else if (picTimer.deathMode)                      image(dinoBack, loc.x, loc.y, scl * 0.6, scl);
+    else if (!picTimer.deathMode)                     image(dinoBackDance, loc.x, loc.y, scl * 0.6, scl);
     else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
 
     imageMode(CORNER);
