@@ -47,13 +47,17 @@ class Timer {
 
      // println("Eggs");
 
-      gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
+    //  gameSystem.eggs.add(new Egg(random(0, width)*frameCount/50, 0));
+    
+       gameSystem.meteorer.add(new Meteor(random(0, width)*frameRate, 0));
     }
     if (!deathMode) {
       fill(0, 200, 0);
 
      // println("No eggs");
-      gameSystem.meteorer.add(new Meteor(random(0, width)*frameCount/10, 0));
+      //gameSystem.meteorer.add(new Meteor(random(0, width)*frameCount/10, 0));
+      
+      gameSystem.eggs.add(new Egg(random(0, width)*frameRate, 0));
 
     }
     text((int)sek, loc.x, loc.y);
@@ -66,13 +70,13 @@ class Timer {
 
   void countDown() {
     sek -= 0.0167;
-    /*
+   /* 
     a--;
     if (a < 0) {
       a = frameRate;
       sek -= 1;
-    }
-*/
+    }*/
+
     if ( sek <= 0 && !deathMode ) {
       sek = startSek;
       deathMode = true;

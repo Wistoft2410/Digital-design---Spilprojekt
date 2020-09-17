@@ -57,7 +57,7 @@ class GameSystem {
     timer.run();
 
     fill(0);
-    textSize(24);
+    textSize(30);
     text("Score: "+ score, width*0.75, height*0.0725);
 
 
