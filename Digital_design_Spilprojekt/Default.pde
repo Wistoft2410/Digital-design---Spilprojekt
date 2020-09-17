@@ -2,9 +2,11 @@
 class Default {
   
   PVector loc;
-  PVector vel;
-  PVector acc;
   PVector loc2;
+  PVector vel;
+  PVector vel2;
+  PVector acc;
+  
 
   float scl;
 
