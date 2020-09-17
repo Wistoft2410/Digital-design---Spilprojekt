@@ -7,14 +7,14 @@ class Egg extends Default {
   boolean swallowed;
   boolean touchGround;
 
-  float eggSizeX = scl;
-  float eggSizeY = scl;
+  float sizeX = scl;
+  float sizeY = scl;
 
   Egg (float loc_x, float loc_y) {
     lifespan = 255;
 
-    eggSizeX = width/50;
-    eggSizeY = height/30;
+    sizeX = width/50;
+    sizeY = height/30;
     touchGround = false;
 
     loc = new PVector(loc_x, loc_y);
@@ -28,7 +28,7 @@ class Egg extends Default {
     if (swallowed) lifespan -= 6;
     noStroke();
     fill(255, 223, 0, lifespan);
-    ellipse(loc.x, loc.y, eggSizeX, eggSizeY);
+    ellipse(loc.x, loc.y, sizeX, sizeY);
   }
 
   void update () {

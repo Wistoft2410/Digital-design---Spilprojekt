@@ -24,7 +24,7 @@ class GameSystem {
   int total; //antal platforme i alt
 
   ArrayList<Default> projectiles;
-  ArrayList<Map> map;
+  ArrayList<Tile> tiles;
 
 
   GameSystem(PApplet ding_, PApplet moan_, PApplet music_) {
@@ -35,7 +35,7 @@ class GameSystem {
     
     score = 0;
 
-    map = new ArrayList<Map>();
+    tiles = new ArrayList<Tile>();
     projectiles = new ArrayList<Default>();
     this.dino = new Dino();
     this.timer = new Timer(width/2, 0, 11);
@@ -52,12 +52,12 @@ class GameSystem {
     update();
   }
 
-  void update() {    
+  void update() {
     changeTime();
     b.display();
     heart.display();
     timer.run();
-    dino.run(projectiles);
+    dino.run(projectiles, tiles);
 
     fill(0);
     textSize(30);
@@ -81,17 +81,19 @@ class GameSystem {
       projectile.run();
     }
 
-    total = map.size();
+    total = tiles.size();
     if (total < 2) {
-    map.add(new Map());
-  }
-  for (int i = map.size()-1; i >=0; i--) {
-    Map m = map.get(i);
-    m.run();
-    if (m.out()) {
-      map.remove(i);
+      tiles.add(new Tile());
     }
-  }
+
+    for (int i = tiles.size() - 1; i >= 0; i--) {
+      Tile m = tiles.get(i);
+      m.run();
+
+      if (m.out()) {
+        tiles.remove(i);
+      }
+    }
 
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');

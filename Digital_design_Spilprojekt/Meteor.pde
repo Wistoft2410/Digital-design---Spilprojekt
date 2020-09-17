@@ -32,6 +32,8 @@ class Meteor extends Default {
   void display () {
     noStroke();
     fill(220);
+    imageMode(CENTER);
     image(meteor,loc.x, loc.y, size, size);
+    imageMode(CORNER);
   }
 }

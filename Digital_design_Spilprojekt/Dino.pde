@@ -2,11 +2,14 @@ class Dino extends Default {
   int liv;
 
   ArrayList<Default> projectiles;
+  ArrayList<Tile> tiles;
 
   boolean touchGround, isLeft, isRight, isUp;
 
   float speed;
-  float scl;
+
+  float sizeX;
+  float sizeY;
 
   PImage dinoMundRight;
   PImage dinoMundRightDance;
@@ -34,14 +37,16 @@ class Dino extends Default {
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.3);
 
-    scl = (height + width)/10;
+    float scl = (height + width)/10;
+    sizeX = scl;
+    sizeY = scl;
 
     touchGround = isLeft = isRight = isUp  = false;
 
     speed = 3;
   }
 
-  void collisionWithDefaults() {
+  void collisionWithObjects() {
     for (Default projectile : projectiles) {
       float actualDist  = dist(projectile.loc.x, projectile.loc.y, loc.x, loc.y);
 
@@ -49,7 +54,7 @@ class Dino extends Default {
         Egg egg = (Egg) projectile;
         // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
         // Vi må lige finde ud af hvordan det kan gøres bedre!
-        float minimumDist = (egg.eggSizeX + egg.eggSizeY) / 4 + scl / 3;
+        float minimumDist = (egg.sizeX + egg.sizeY) / 4 + (sizeX + sizeY) / 5;
 
         // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
         // for at se om Dino'en har spist ægget eller ej!
@@ -68,10 +73,10 @@ class Dino extends Default {
 
       } else if (projectile instanceof Meteor) {
         Meteor meteor = (Meteor) projectile;
-        // Grunden til at der divideres med 3 er fordi vi gerne vil have fat i selve "radius"
-        float minimumDist = meteor.size / 2 + scl / 3;
-        // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
-        // for at se om Dino'en har spist ægget eller ej!
+
+        float minimumDist = meteor.size / 2 + (sizeX + sizeY) / 5;
+        // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen hit
+        // for at se om Dino'en har ramt en meteor eller ej!
         boolean hitAlready = meteor.hit;
         
         if (actualDist < minimumDist && !hitAlready) {
@@ -89,6 +94,21 @@ class Dino extends Default {
         }
       }
     }
+
+    for (Tile tile : tiles) {
+      float leftTop   = loc.x;
+      float rightTop  = loc.y;
+      float leftBot   = loc.x + sizeX;
+      float rightBot  = loc.y + sizeY;
+
+      float leftTopTile   = tile.loc.x;
+      float rightTopTile  = tile.loc.y;
+      float leftBotTile   = tile.loc.x + tile.sizeX;
+      float rightBotTile  = tile.loc.y + tile.sizeY;
+
+      // TODO: Det er her der skal skabes kollision med tiles'ne!!!
+  
+    }
   }
 
   void display() {
@@ -98,17 +118,40 @@ class Dino extends Default {
 
     stroke(0);
     strokeWeight(0);
+    displayDino();
+  }
 
+  void displayDino() {
     //Dino billede
     imageMode(CENTER);
-    if (keyCode == RIGHT && picTimer.deathMode)       image(dinoMundRight, loc.x, loc.y, scl, scl);
-    else if (keyCode == RIGHT && !picTimer.deathMode) image(dinoMundRightDance, loc.x, loc.y, scl, scl);
-    else if (keyCode == LEFT && picTimer.deathMode)   image(dinoMundLeft, loc.x, loc.y, scl, scl);
-    else if (keyCode == LEFT && !picTimer.deathMode)  image(dinoMundLeftDance, loc.x, loc.y, scl, scl);
-    else if (picTimer.deathMode)                      image(dinoBack, loc.x, loc.y, scl * 0.6, scl);
-    else if (!picTimer.deathMode)                     image(dinoBackDance, loc.x, loc.y, scl * 0.6, scl);
-    else image(dinoBack ,loc.x,loc.y,scl*0.6,scl);
+    PImage tempPic;
 
+    if (keyCode == RIGHT && picTimer.deathMode) {
+      sizeX = scl;
+      tempPic = dinoMundRight;
+
+    } else if (keyCode == RIGHT && !picTimer.deathMode) {
+      sizeX = scl;
+      tempPic = dinoMundRightDance;
+
+    } else if (keyCode == LEFT && picTimer.deathMode) {
+      sizeX = scl;
+      tempPic = dinoMundLeft;
+
+    } else if (keyCode == LEFT && !picTimer.deathMode) {
+      sizeX = scl;
+      tempPic = dinoMundLeftDance;
+
+    } else if (!picTimer.deathMode) {
+      sizeX = scl * 0.6;
+      tempPic = dinoBackDance;
+
+    } else {
+      sizeX = scl * 0.6;
+      tempPic = dinoBack;
+    }
+
+    image(tempPic, loc.x, loc.y, sizeX, sizeY);
     imageMode(CORNER);
   }
 
@@ -119,7 +162,7 @@ class Dino extends Default {
     loc.add(vel);
 
     hitGround();
-    collisionWithDefaults();
+    collisionWithObjects();
 
     // Der skal være en maksimum fart hen af x-aksen, som lige nu er på de 3
     if (abs(vel.x) > 3) vel.x = vel.x > 0 ? 3 : -3;
@@ -127,10 +170,11 @@ class Dino extends Default {
     picTimer.update();
   }
 
-  void run(ArrayList<Default> projectiles) {
+  void run(ArrayList<Default> projectiles, ArrayList<Tile> tiles) {
     // Jeg bliver nødt til at bruge "this." her, da jeg gerne vil referere til "projectiles"
     // variablen i det globale scope, håber i forstår ellers spørg i bare!
     this.projectiles = projectiles;
+    this.tiles = tiles;
 
     update();
     display();
