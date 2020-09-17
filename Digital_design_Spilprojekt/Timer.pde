@@ -55,7 +55,6 @@ class Timer {
     if (deathMode) {
       fill(200, 0, 0);
       gameSystem.projectiles.add(new Meteor(random(0, width) * frameRate/2, 0));
-
     }
 
     text((int) sek, loc.x, loc.y);
