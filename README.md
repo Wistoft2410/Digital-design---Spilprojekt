@@ -1,8 +1,9 @@
-# Digital design - Spilprojekt - Ikke fundet noget navn endnu
+# Digital design - Spilprojekt - Dino
 
 ## Fag: Digital Design
 ## Gruppe: Anders, Simon og Marcus Hansen fra L 3d2 og Adam fra L 3i
 ## Deadline: 20/9-2020 23:00 
+## Navn på spil/projekt: Dino
 
 ### Regler for bidrag/samarbejde i dette repository
 - Hver gang du commiter til en **specifik Task** så skal du sørge for at skrive en kommentar der **refererer** til den **Task**.
