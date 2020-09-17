@@ -1,2 +1,9 @@
 .DS_Store
+
+# Glem potentielle personlige highscore filer
 highscore.txt
+highscore.xml
+highscore.csv
+
+# Fjern de der .autosave filer som enten git eller processing laver automatisk xD
+*.autosave
