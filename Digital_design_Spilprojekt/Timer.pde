@@ -55,7 +55,6 @@ class Timer {
     if (deathMode) {
       fill(200, 0, 0);
       gameSystem.projectiles.add(new Meteor(random(0, width) * frameRate/2, 0));
-
     }
 
     text((int) sek, loc.x, loc.y);
@@ -68,16 +67,7 @@ class Timer {
 
   void countDown() {
     sek -= 0.0167;
-
-    /*
-     a--;
-     if (a < 0) {
-       a = frameRate;
-       sek -= 1;
-     }
-    */
     if (sek <= 0) {
-
       sek = startSek;
       deathMode = !deathMode;
     } 
