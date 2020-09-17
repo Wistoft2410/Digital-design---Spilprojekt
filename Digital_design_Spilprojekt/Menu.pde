@@ -9,7 +9,7 @@ class Menu {
   Menu () {
     startKnap = new Knap(width*0.5, height*0.3, "Start", width*0.5, height*0.075);
     exitGame = new Knap(width*0.85, height*0.95, "Exit game", width*0.2, height*0.03);
-    titel = "B";
+    titel = "DINO";
     locTitel = new PVector(width/2, height*0.25);
   }
 
@@ -23,8 +23,8 @@ class Menu {
   void display() {
     fill(0);
     textAlign(CENTER);
-    textSize((height+width)*0.1);
-    text(titel, locTitel.x, locTitel.y, width*0.5, height*0.5);
+    textSize((height+width)*0.09);
+    text(titel, locTitel.x, locTitel.y+50, width*0.5, height*0.5);
   }
 
   void leave() {
