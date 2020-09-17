@@ -10,30 +10,27 @@ class Background {
     vandloc = new PVector(-1, height/1.9);
     soloc = new PVector (100, height/1.40);
     ps = new Psystem(new PVector(60, 566), new PVector(width/2+50, height/2.68));
-    
-    
   }
 
   void display() {
     stroke(0);
     strokeWeight(0);
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
-    
+
     //tree
     int t = 50;
-    while(t <=width) {
-      
-    pushMatrix();
-    fill(118, 92, 72);
-    rectMode(CENTER);
-    translate(220+t, 550);
-    rect(0+t, 0, 25, 50);
-    fill(58, 95, 11);
-    ellipse(0+t, -40, 45, 40);
-    t+=30;
-    popMatrix();
+    while (t <=width) {
+      pushMatrix();
+      fill(118, 92, 72);
+      rectMode(CENTER);
+      translate(100+t, 550);
+      rect(0+t, 0, 25, 50);
+      fill(58, 95, 11);
+      ellipse(0+t, -40, 45, 40);
+      t+=30;
+      popMatrix();
     } 
-       
+
     //planet med måne i omkreds
     fill(100);
     pushMatrix();
@@ -53,11 +50,17 @@ class Background {
     fill(35, 137, 255);
     ellipse(soloc.x, soloc.y, 150, 30);
 
-    //vandfaldet
-    noFill();
-    stroke(0,191,255);
-    strokeWeight(30);
-    bezier(vandloc.x, vandloc.y-15, 60, vandloc.y-30, 40, 500, vandloc.x+40, vandloc.y+140);
+   //bjerge
+    int b = 0;
+    while (b <=width) {
+      pushMatrix();
+      stroke(139,69,19);
+      fill(139,69,19);
+      translate(3+b, 400);
+      triangle(0+b, 0, 40+b, -50, 80+b, 0); 
+      b+=30;
+      popMatrix();
+    }
 
     //vulkan
     noFill();
@@ -81,12 +84,16 @@ class Background {
     vertex(200, 100);
     endShape();
     popMatrix();
-    
+
+ 
+
+    //vandfaldet
+    noFill();
+    stroke(0, 191, 255);
+    strokeWeight(30);
+    bezier(vandloc.x, vandloc.y-15, 60, vandloc.y-30, 40, 500, vandloc.x+40, vandloc.y+140);
+
     //Partikel system
     ps.run();
-
-  }
-  void tree () {
-   
   }
 }

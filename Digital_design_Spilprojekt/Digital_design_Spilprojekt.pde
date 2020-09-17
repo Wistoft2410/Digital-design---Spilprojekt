@@ -14,6 +14,10 @@ void draw() {
   game();
 }
 
+/*void mousePressed() {
+  println(mouseX, mouseY);
+}*/
+
 void keyPressed() {
   gameSystem.dino.recordKeys(keyCode, true);
   restart();
