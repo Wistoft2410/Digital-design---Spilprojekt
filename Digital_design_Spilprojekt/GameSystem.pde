@@ -84,14 +84,11 @@ class GameSystem {
 
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
-    //println(highscore);
     saveStrings("highscore.txt", list);
     list = reverse( sort(list));
     hs = int(highscore);
 
-    if (hs <= score) {
-      println("highscore " + hs);
-    }
+    if (hs <= score) println("highscore " + hs);
   }
 
   boolean gameOver () {
