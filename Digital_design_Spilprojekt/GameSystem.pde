@@ -41,7 +41,7 @@ class GameSystem {
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
 
-    String[] list = loadStrings("highscore.txt");
+    String[] list = loadStrings("highscore.xml");
   }
 
   void incrementScore() {
@@ -95,7 +95,7 @@ class GameSystem {
 
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
-    saveStrings("highscore.txt", list);
+    saveStrings("highscore.xml", list);
     list = reverse( sort(list));
     hs = int(highscore);
 
