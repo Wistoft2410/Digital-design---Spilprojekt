@@ -17,6 +17,12 @@ class Background {
     strokeWeight(0);
     line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
 
+     //himmel
+    fill(135, 206, 235);
+    noStroke();
+    rectMode(CORNER);
+    rect(0, 0, 800, 400);
+
     //tree
     int t = 50;
     while (t <=width) {
@@ -85,13 +91,14 @@ class Background {
     endShape();
     popMatrix();
 
- 
+   
 
     //vandfaldet
     noFill();
     stroke(0, 191, 255);
     strokeWeight(30);
     bezier(vandloc.x, vandloc.y-15, 60, vandloc.y-30, 40, 500, vandloc.x+40, vandloc.y+140);
+
 
     //Partikel system
     ps.run();
