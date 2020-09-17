@@ -5,7 +5,7 @@ Menu menu;
 void setup() {
   frameRate(60);
   size(800, 800);
-  gameSystem = new GameSystem(this);
+  gameSystem = new GameSystem(this,this);
   menu = new Menu();     
 }
 
@@ -40,7 +40,7 @@ void game() {
   else if (!menu.startKnap.on) gameSystem.run();
 
   if (gameSystem.gameOver()) {
-    gameSystem = new GameSystem(this);
+    gameSystem = new GameSystem(this,this);
     menu.startKnap.on = true;
   }
 }

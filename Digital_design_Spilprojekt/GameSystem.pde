@@ -16,6 +16,7 @@ class GameSystem {
   Psystem ps;
 
   SoundFile ding;
+  SoundFile moan;
 
   int score;
   int hs;
@@ -24,10 +25,10 @@ class GameSystem {
   ArrayList<Map> m;
 
 
-  GameSystem(PApplet ding_) {
+  GameSystem(PApplet ding_, PApplet moan_) {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
-
+    moan = new SoundFile(moan_, "../Ressources/Moan.wav");
     score = 0;
 
     this.m = new ArrayList<Map>();
@@ -48,6 +49,7 @@ class GameSystem {
   }
 
   void update() {
+    changeTime();
     b.display();
     heart.display();
     timer.run();
@@ -83,13 +85,22 @@ class GameSystem {
     saveStrings("highscore.txt", list);
     list = reverse( sort(list));
     hs = int(highscore);
-    
-    if(hs <= score) {
-    println("highscore " + hs);
+
+    if (hs <= score) {
+      println("highscore " + hs);
     }
   }
 
   boolean gameOver () {
     return dino.liv <= 0;
+  }
+
+  void changeTime() {
+    if ( timer.deathMode ) {
+      timer.startSek = 11 - score/10;
+    }
+    if ( !timer.deathMode ) {
+      timer.startSek =  2 + score/10;
+    }
   }
 }
