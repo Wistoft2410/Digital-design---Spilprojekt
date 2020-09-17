@@ -47,14 +47,14 @@ class Timer {
     if (!deathMode) { 
 
       fill(0, 200, 0);
-      gameSystem.projectiles.add(new Egg(random(0, width) * frameCount/10, 0));
+      gameSystem.projectiles.add(new Egg(random(0, width) * frameRate, 0));
     }
 
 
     // Hvis vi ER i death mode så skal vi tilføje meteorer!
     if (deathMode) {
       fill(200, 0, 0);
-      gameSystem.projectiles.add(new Meteor(random(0, width) * frameCount/50, 0));
+      gameSystem.projectiles.add(new Meteor(random(0, width) * frameRate/2, 0));
 
     }
 
