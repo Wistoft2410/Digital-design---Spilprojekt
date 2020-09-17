@@ -7,7 +7,7 @@ void setup() {
   size(800, 800);
   gameSystem = new GameSystem(this,this,this);
   menu = new Menu();     
-  gameSystem.music.loop(1,0.4);
+  gameSystem.music.loop(1,0.5);
 }
 
 void draw() {
