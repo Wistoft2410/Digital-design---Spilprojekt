@@ -19,7 +19,7 @@ class Egg extends Default {
 
     loc = new PVector(loc_x, loc_y);
     vel = new PVector(0, 0);
-    acc = new PVector(0, height*0.000017);
+    acc = new PVector(0, height*0.000020);
   }
 
   void display () {

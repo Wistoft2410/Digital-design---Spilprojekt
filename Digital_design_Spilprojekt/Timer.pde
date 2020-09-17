@@ -42,16 +42,20 @@ class Timer {
     textAlign(CENTER);
     textSize(timerSize);
 
+
     // Hvis vi IKKE er i death mode så skal vi tilføje æg!
     if (!deathMode) { 
+
       fill(0, 200, 0);
       gameSystem.projectiles.add(new Egg(random(0, width) * frameCount/10, 0));
     }
+
 
     // Hvis vi ER i death mode så skal vi tilføje meteorer!
     if (deathMode) {
       fill(200, 0, 0);
       gameSystem.projectiles.add(new Meteor(random(0, width) * frameCount/50, 0));
+
     }
 
     text((int) sek, loc.x, loc.y);
@@ -64,6 +68,7 @@ class Timer {
 
   void countDown() {
     sek -= 0.0167;
+
     /*
      a--;
      if (a < 0) {
@@ -72,6 +77,7 @@ class Timer {
      }
     */
     if (sek <= 0) {
+
       sek = startSek;
       deathMode = !deathMode;
     } 
