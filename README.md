@@ -12,8 +12,8 @@
 
 - Sørg for at **assign** jer selv til den **Task/issue** som i arbejder på, det er noget man kan gøre på en issue, ligesom man kan tilføje **labels** til en issue!
 
-- Du skal også sørge for at lave en ny branch for hver ny **major** feature du har tænkt dig at arbejde på. Hvis den allerede er lavet,
-  så skal du selvfølgelig bare tilgå den branch! Og når du er fuldstændig færdig med en branch så skal du sørge for at slette den!
+- Du skal også sørge for at lave en ny branch for hver ny **major feature** du har tænkt dig at arbejde på. Hvis den allerede er lavet,
+  så skal du selvfølgelig bare tilgå den branch! Og når du er fuldstændig færdig med en branch så skal du sørge for at slette den.
 
 
 ### Alle links:
