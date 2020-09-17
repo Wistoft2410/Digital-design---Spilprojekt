@@ -100,7 +100,7 @@ class GameSystem {
       timer.startSek = 11 - score/10;
     }
     if ( !timer.deathMode ) {
-      timer.startSek =  2 + score/10;
+      timer.startSek =  11 + score/10;
     }
   }
 }
