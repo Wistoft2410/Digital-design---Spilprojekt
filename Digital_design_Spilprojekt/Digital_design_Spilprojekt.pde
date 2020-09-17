@@ -31,8 +31,11 @@ void keyReleased() {
 
 void restart () {
   if (key == 'r' || key == 'R' ) {
-    println("Reset");
     frameCount = -1;
+
+    // Når vi genstarter programmet så skal musik lydfilen stoppes,
+    // da vi ikke vil gentage musikken 2, 3, 4 ... n gange!
+    gameSystem.music.stop();
   }
 }
 
