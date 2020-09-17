@@ -10,14 +10,14 @@ class Timer {
 
   boolean deathMode;
 
-  Timer () {
+  /*Timer () {
     timerSize = (width + height) * 0.1;
     loc = new PVector(0, 0);
     startSek = 10;
     sek = 10;
     deathMode = false;
   }
-
+*/
   Timer (float sek_) {
     timerSize = (width + height) * 0.1;
     loc = new PVector(0, 0);
