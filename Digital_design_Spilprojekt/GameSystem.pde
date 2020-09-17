@@ -16,6 +16,7 @@ class GameSystem {
   Psystem ps;
 
   SoundFile ding;
+  SoundFile moan;
 
   int score;
   int hs;
@@ -24,10 +25,10 @@ class GameSystem {
   ArrayList<Map> m;
 
 
-  GameSystem(PApplet ding_) {
+  GameSystem(PApplet ding_, PApplet moan_) {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
-
+    moan = new SoundFile(moan_, "../Ressources/Moan.wav");
     score = 0;
 
     this.m = new ArrayList<Map>();

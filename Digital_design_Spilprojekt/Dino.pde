@@ -79,7 +79,10 @@ class Dino extends Default {
           //Ægget står stille når man får point
           meteor.acc.mult(0);
           meteor.vel.mult(0);
-
+          
+          //afspildning af lyd når man mister liv
+          gameSystem.moan.play();
+          
           // Vi skal selvfølgelig også miste liv og sørge for at meteoren forsvinder!
           meteor.setHit(true);
           gameSystem.heart.liv--;
