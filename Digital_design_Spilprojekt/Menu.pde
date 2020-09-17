@@ -1,11 +1,9 @@
 class Menu {
 
   Knap startKnap;
-
   Knap exitGame;
-
+  
   PVector locTitel;
-
   String titel;
 
   Menu () {
@@ -14,7 +12,6 @@ class Menu {
     titel = "B";
     locTitel = new PVector(width/2, height*0.25);
   }
-
 
   void update() {
     startKnap.update();

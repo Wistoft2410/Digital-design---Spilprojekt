@@ -1,8 +1,7 @@
-class Heart {
+class Heart extends Default {
 
   PImage heart = loadImage("../Ressources/Heart.png");
   int liv;
-  PVector loc;
   float heartSize;
 
   Heart() {
