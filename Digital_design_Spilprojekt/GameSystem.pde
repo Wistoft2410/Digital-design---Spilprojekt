@@ -114,14 +114,14 @@ class GameSystem {
   void changeTime() {
     if ( timer.deathMode ) {
       timer.startSek = 11 - score/10;
-      if (timer.startSek < 2) {
-        timer.startSek = 2;
+      if (timer.startSek < 3) {
+        timer.startSek = 3;
       }
     }
     if ( !timer.deathMode ) {
       timer.startSek =  11 + score/10;
-      if (timer.startSek > 25) {
-        timer.startSek = 25;
+      if (timer.startSek > 26) {
+        timer.startSek = 26;
       }
     }
   }

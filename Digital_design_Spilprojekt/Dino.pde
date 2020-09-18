@@ -181,6 +181,15 @@ class Dino extends Default {
   }
 
   void hitGround() {
+    
+    if (loc.x < 0) {
+      loc.x = width;
+    }
+    
+        if (loc.x > width) {
+      loc.x = 0;
+    }
+    
     if (loc.y > height - scl / 2) {
       touchGround = true;
       loc.y = height - scl / 2;
