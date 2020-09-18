@@ -15,7 +15,7 @@ class Background {
   void display() {
     stroke(0);
     strokeWeight(0);
-    line(vandloc.x, vandloc.y+150, width, vandloc.y+150);
+    line(vandloc.x, vandloc.y+height*0.1875, width, vandloc.y+height*0.1875);
 
      //himmel
     fill(135, 206, 235);
