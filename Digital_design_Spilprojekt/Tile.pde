@@ -9,7 +9,7 @@ class Tile extends Default {
   Tile() {
     sizeX = 300.0 / 800.0 * width;
     sizeY = 5.0 / 800.0 * height;
-    loc = new PVector(random(width + sizeX, width + sizeX * 2.0), random((680.0 / 800.0) * height, height));
+    loc = new PVector(random(width + sizeX * 1.5, width + sizeX * 2), random(((680.0 / 800.0) * height) - sizeY*0.5, height - sizeY*0.5));
     vel = new PVector(0.5, 0);
   }
 
@@ -25,11 +25,11 @@ class Tile extends Default {
   void display() {
     noStroke();
     fill(100);
-    rectMode(CORNER);
+    rectMode(CENTER);
     rect(loc.x, loc.y, sizeX, sizeY);
   }
 
   boolean out() {
-    return loc.x < 0;
+    return loc.x + sizeX * 0.5 < 0;
     }
 }

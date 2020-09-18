@@ -25,6 +25,7 @@ class Psystem {
       }
     }
   }
+  
  class Particle extends Default {
   float lifespan; 
   float lavaspan;

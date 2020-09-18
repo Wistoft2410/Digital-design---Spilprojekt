@@ -96,18 +96,30 @@ class Dino extends Default {
     }
 
     for (Tile tile : tiles) {
-      float leftTop   = loc.x;
-      float rightTop  = loc.y;
-      float leftBot   = loc.x + sizeX;
-      float rightBot  = loc.y + sizeY;
+      float left   = loc.x - sizeX*0.5;
+      float top    = loc.y - sizeY*0.5;
+      float right  = loc.x + sizeX*0.5;
+      float bot    = loc.y + sizeY*0.5;
 
-      float leftTopTile   = tile.loc.x;
-      float rightTopTile  = tile.loc.y;
-      float leftBotTile   = tile.loc.x + tile.sizeX;
-      float rightBotTile  = tile.loc.y + tile.sizeY;
-
-      // TODO: Det er her der skal skabes kollision med tiles'ne!!!
-  
+      float leftTile   = tile.loc.x - tile.sizeX*0.5;
+      float topTile    = tile.loc.y - tile.sizeY*0.5;
+      float rightTile  = tile.loc.x + tile.sizeX*0.5;
+      float botTile    = tile.loc.y + tile.sizeY*0.5;
+      
+      if (right > leftTile && bot > topTile && botTile > top && rightTile > left) {
+        // collision with right side of dino
+        if (loc.x < tile.loc.x) {
+          loc.x = tile.loc.x - sizeX*0.5 - tile.sizeX*0.5;
+        
+        // collision with left side of dino   
+        } else if (loc.x > tile.loc.x) {
+          loc.x = tile.loc.x + sizeX*0.5 + tile.sizeX*0.5;
+          
+        // collision with bottom of dino
+        } else if (bot > topTile) {
+          loc.y = topTile - sizeY*0.5 - 1;
+        }
+      }
     }
   }
 
@@ -186,13 +198,13 @@ class Dino extends Default {
       loc.x = width;
     }
     
-        if (loc.x > width) {
+     if (loc.x > width) {
       loc.x = 0;
     }
     
-    if (loc.y > height - scl / 2) {
+    if (loc.y > height - sizeY / 2) {
       touchGround = true;
-      loc.y = height - scl / 2;
+      loc.y = height - sizeY / 2;
     } else touchGround = false;
   }
 
