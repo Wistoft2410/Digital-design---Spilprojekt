@@ -3,10 +3,10 @@ PrintWriter output;
 GameSystem gameSystem;
 Menu menu;
 
-Timer gameovertid;
+Gameover gameover; 
 
 void setup() {
-  gameovertid = new Timer(2);
+  gameover = new Gameover();
   output = createWriter("highscore.xml"); 
   output.flush();
   output.close();
@@ -51,10 +51,8 @@ void game() {
   else if (!menu.startKnap.on) gameSystem.run();
 
   if (gameSystem.gameOver()) {
-    if ( gameovertid.sek > 0 ) {
-      background(0);
-      text("Game Over",width/2,height/2);
-      gameovertid.sek -= 0.0167;
+    if ( gameover.gameovertid.sek > 0 ) {
+      gameover.update();
     } else {
       gameSystem = new GameSystem(this, this, this);
       menu.startKnap.on = true;
