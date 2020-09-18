@@ -13,8 +13,8 @@ class Psystem {
 
   void add() {
     particles.add(new Particle(vandstart,lavastart));
- 
   }
+  
   void run() {
     add();
     for (int i = particles.size()-1; i >= 0; i--) {
