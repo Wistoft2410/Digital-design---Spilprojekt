@@ -23,6 +23,7 @@ class GameSystem {
   int hs; //highscore
   int total; //antal platforme i alt
 
+
   ArrayList<Default> projectiles;
   ArrayList<Tile> tiles;
 
@@ -31,8 +32,8 @@ class GameSystem {
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
     moan = new SoundFile(moan_, "../Ressources/Moan.wav");
-    music = new SoundFile(music_,"../Ressources/Musik.wav");
-    
+    music = new SoundFile(music_, "../Ressources/Musik.wav");
+
     score = 0;
 
     tiles = new ArrayList<Tile>();
@@ -101,7 +102,7 @@ class GameSystem {
     list = reverse( sort(list));
     hs = int(highscore);
 
-    if (hs <= score){ 
+    if (hs <= score) { 
       //println("highscore " + hs);
     }
   }
@@ -113,9 +114,15 @@ class GameSystem {
   void changeTime() {
     if ( timer.deathMode ) {
       timer.startSek = 11 - score/10;
+      if (timer.startSek < 2) {
+        timer.startSek = 2;
+      }
     }
     if ( !timer.deathMode ) {
       timer.startSek =  11 + score/10;
+      if (timer.startSek > 25) {
+        timer.startSek = 25;
+      }
     }
   }
 }
