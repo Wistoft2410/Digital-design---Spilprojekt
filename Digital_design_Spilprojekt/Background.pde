@@ -27,13 +27,13 @@ class Background {
     int t = 50;
     while (t <=width) {
       pushMatrix();
+      translate(100+t, height*0.6875);
       fill(118, 92, 72);
       rectMode(CENTER);
-      translate(100+t, 550);
-      rect(0+t, 0, 25, 50);
+      rect(t, 0, width*0.03125, height*0.0625);
       fill(58, 95, 11);
-      ellipse(0+t, -40, 45, 40);
-      t+=30;
+      ellipse(t, -width*0.05, height*0.05625, height*0.05);
+      t+=width*0.0375;
       popMatrix();
     } 
 
