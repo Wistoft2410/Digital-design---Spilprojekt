@@ -3,15 +3,18 @@ PrintWriter output;
 GameSystem gameSystem;
 Menu menu;
 
+Timer gameovertid;
+
 void setup() {
+  gameovertid = new Timer(2);
   output = createWriter("highscore.xml"); 
   output.flush();
   output.close();
   frameRate(60);
   size(800, 800);
-  gameSystem = new GameSystem(this,this,this);
+  gameSystem = new GameSystem(this, this, this);
   menu = new Menu();     
-  gameSystem.music.loop(1,0.5);
+  gameSystem.music.loop(1, 0.5);
 }
 
 void draw() {
@@ -48,7 +51,13 @@ void game() {
   else if (!menu.startKnap.on) gameSystem.run();
 
   if (gameSystem.gameOver()) {
-    gameSystem = new GameSystem(this,this,this);
-    menu.startKnap.on = true;
+    if ( gameovertid.sek > 0 ) {
+      background(0);
+      text("Game Over",width/2,height/2);
+      gameovertid.sek -= 0.0167;
+    } else {
+      gameSystem = new GameSystem(this, this, this);
+      menu.startKnap.on = true;
+    }
   }
 }

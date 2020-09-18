@@ -118,6 +118,7 @@ class GameSystem {
   }
 
   boolean gameOver () {
+    gameovertid.startSek = 1;
     return dino.liv <= 0;
   }
 
