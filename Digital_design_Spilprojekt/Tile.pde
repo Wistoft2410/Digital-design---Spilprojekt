@@ -7,10 +7,10 @@ class Tile extends Default {
   float sizeY;
 
   Tile() {
-    loc = new PVector(random((-700.0 / 800.0) * width, -300), random((680.0 / 800.0) * height, height));
-    vel = new PVector(0.5, 0);
     sizeX = 300.0 / 800.0 * width;
     sizeY = 5.0 / 800.0 * height;
+    loc = new PVector(random(width + sizeX, width + sizeX * 2.0), random((680.0 / 800.0) * height, height));
+    vel = new PVector(0.5, 0);
   }
 
   void run() {
@@ -19,7 +19,7 @@ class Tile extends Default {
   }
 
   void update() {
-    loc.add(vel);
+    loc.sub(vel);
   }
 
   void display() {
@@ -30,6 +30,6 @@ class Tile extends Default {
   }
 
   boolean out() {
-    return loc.x > width;
-  }
+    return loc.x < 0;
+    }
 }

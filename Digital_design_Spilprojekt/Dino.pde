@@ -54,7 +54,7 @@ class Dino extends Default {
         Egg egg = (Egg) projectile;
         // Jeg tager gennemsnittet af x længden og y længden af ægget, da ægget er en ellipse og ikke en cirkel.
         // Vi må lige finde ud af hvordan det kan gøres bedre!
-        float minimumDist = (egg.sizeX + egg.sizeY) / 4 + (sizeX + sizeY) / 5;
+        float minimumDist = (egg.sizeX + egg.sizeY) / 4 + (sizeX + sizeY) / 5.5;
 
         // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen swallowed
         // for at se om Dino'en har spist ægget eller ej!
@@ -74,7 +74,7 @@ class Dino extends Default {
       } else if (projectile instanceof Meteor) {
         Meteor meteor = (Meteor) projectile;
 
-        float minimumDist = meteor.size / 2 + (sizeX + sizeY) / 5;
+        float minimumDist = meteor.size / 2 + (sizeX + sizeY) / 5.5;
         // Af en eller anden grund så kolliderer ægget to gange så derfor tjekker vi boolean variablen hit
         // for at se om Dino'en har ramt en meteor eller ej!
         boolean hitAlready = meteor.hit;
