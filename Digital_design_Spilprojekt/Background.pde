@@ -54,7 +54,7 @@ class Background {
 
     //sø
     fill(35, 137, 255);
-    ellipse(soloc.x, soloc.y, 150, 30);
+    ellipse(soloc.x, soloc.y, width*0.1875, height*0.0375);
 
    //bjerge
     int b = 0;
@@ -62,9 +62,9 @@ class Background {
       pushMatrix();
       stroke(139,69,19);
       fill(139,69,19);
-      translate(3+b, 400);
-      triangle(0+b, 0, 40+b, -50, 80+b, 0); 
-      b+=30;
+      translate(width*0.00375+b, height*0.5);
+      triangle(b, 0, width*0.05+b, -height*0.0625, width*0.1+b, 0); 
+      b+=width*0.0375;
       popMatrix();
     }
 
@@ -72,22 +72,22 @@ class Background {
     noFill();
     pushMatrix();
     stroke(155, 118, 83);
-    strokeWeight(5);
+    strokeWeight((height+width)*0.003125);
     noFill();
     translate(width/2, height/2.68);
-    curve(0, -100, 0, 0, 100, 0, 100, -100);
-    curve(0, -100, 0, 0, -100, 100, -400, 100);
-    curve(200, 0, 100, 0, 200, 100, 400, 100);
+    curve(0, -height*0.125, 0, 0, width*0.125, 0, width*0.125, -height*0.125);
+    curve(-width*0.25, 0, 0, 0, -width*0.125, height*0.125, -width*0.5, height*0.125);
+    curve(width*0.25, 0, width*0.125, 0, width*0.25, height*0.125, width*0.5, height*0.125);
     fill(155, 118, 83);
     beginShape();
-    vertex(-90, 100);
-    vertex(-45, 75);
+    vertex(-width*0.1125, height*0.125);
+    vertex(-width*0.05625, height*0.09375);
     vertex(0, 0);
-    vertex(18, 13);
-    vertex(91, 12);
-    vertex(100, 0);
-    vertex(135, 60);
-    vertex(200, 100);
+    vertex(width*0.0225, height*0.01625);
+    vertex(width*0.11375, height*0.015);
+    vertex(width*0.125, 0);
+    vertex(width*0.16875, height*0.075);
+    vertex(width*0.25, height*0.125);
     endShape();
     popMatrix();
 
@@ -96,8 +96,8 @@ class Background {
     //vandfaldet
     noFill();
     stroke(0, 191, 255);
-    strokeWeight(30);
-    bezier(vandloc.x, vandloc.y-15, 60, vandloc.y-30, 40, 500, vandloc.x+40, vandloc.y+140);
+    strokeWeight((height+width)*0.01875);
+    bezier(vandloc.x, vandloc.y-height*0.01875, width*0.075, vandloc.y-height*0.0375, width*0.05, height*0.625, vandloc.x+width*0.05, vandloc.y+height*0.175);
 
 
     //Partikel system
