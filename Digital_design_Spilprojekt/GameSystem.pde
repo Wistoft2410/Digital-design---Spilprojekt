@@ -26,7 +26,7 @@ class GameSystem {
 
   ArrayList<Default> projectiles;
   ArrayList<Tile> tiles;
-
+  String[] savedScore;
 
   GameSystem(PApplet ding_, PApplet moan_, PApplet music_) {
     b = new Background();
@@ -42,7 +42,7 @@ class GameSystem {
     this.timer = new Timer(width/2, 0, 11);
     this.heart = new Heart(0, 0, (height+width) * 0.05, dino.liv);
 
-    String[] list = loadStrings("highscore.xml");
+    savedScore = loadStrings("highscore.xml");
   }
 
   void incrementScore() {
@@ -96,14 +96,22 @@ class GameSystem {
       }
     }
 
+
+    int latestScore = int (savedScore[0]); //Man kan ædnre strings 
+
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
-    saveStrings("highscore.xml", list);
+
+    if (latestScore < score) {
+
+      saveStrings("highscore.xml", list);
+    }
+
     list = reverse( sort(list));
     hs = int(highscore);
 
     if (hs <= score) { 
-      //println("highscore " + hs);
+      println("highscore " + hs);
     }
   }
 

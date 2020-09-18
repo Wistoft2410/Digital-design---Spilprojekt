@@ -16,6 +16,8 @@ class Menu {
   void update() {
     startKnap.update();
     exitGame.update();
+    exitGame.r = 255;
+    exitGame.g = 0;
     display();
     leave();
   }
