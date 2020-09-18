@@ -6,7 +6,7 @@ Menu menu;
 Gameover gameover; 
 
 void setup() {
-  gameover = new Gameover();
+  gameover = new Gameover(this);
   output = createWriter("highscore.xml"); 
   output.flush();
   output.close();
