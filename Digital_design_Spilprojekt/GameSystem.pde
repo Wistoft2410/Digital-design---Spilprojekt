@@ -96,8 +96,8 @@ class GameSystem {
       }
     }
 
-
-    int latestScore = int (savedScore[0]); //Man kan ædnre strings 
+    if (savedScore.length > 0) {
+        int latestScore = int (savedScore[0]); //Man kan ædnre strings
 
     String highscore = String.valueOf(score);
     String[] list = split(highscore, ' ');
@@ -113,6 +113,8 @@ class GameSystem {
     if (hs <= score) { 
       println("highscore " + hs);
     }
+    }
+
   }
 
   boolean gameOver () {

@@ -1,8 +1,12 @@
 import processing.sound.*;
+PrintWriter output;
 GameSystem gameSystem;
 Menu menu;
 
 void setup() {
+  output = createWriter("highscore.xml"); 
+  output.flush();
+  output.close();
   frameRate(60);
   size(800, 800);
   gameSystem = new GameSystem(this,this,this);
