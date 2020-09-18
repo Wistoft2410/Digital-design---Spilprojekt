@@ -7,10 +7,10 @@ class Tile extends Default {
   float sizeY;
 
   Tile() {
-    loc = new PVector(random(-600, -300), random(680, 800));
+    loc = new PVector(random((-700.0 / 800.0) * width, -300), random((680.0 / 800.0) * height, height));
     vel = new PVector(0.5, 0);
-    sizeX = 300;
-    sizeY = 5;
+    sizeX = 300.0 / 800.0 * width;
+    sizeY = 5.0 / 800.0 * height;
   }
 
   void run() {
@@ -24,7 +24,7 @@ class Tile extends Default {
 
   void display() {
     noStroke();
-    fill(2);
+    fill(100);
     rectMode(CORNER);
     rect(loc.x, loc.y, sizeX, sizeY);
   }
