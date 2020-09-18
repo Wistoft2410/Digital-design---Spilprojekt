@@ -88,10 +88,10 @@ class GameSystem {
     }
 
     for (int i = tiles.size() - 1; i >= 0; i--) {
-      Tile m = tiles.get(i);
-      m.run();
+      Tile t = tiles.get(i);
+      t.run();
 
-      if (m.out()) {
+      if (t.out()) {
         tiles.remove(i);
       }
     }
