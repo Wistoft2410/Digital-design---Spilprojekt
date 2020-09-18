@@ -21,7 +21,7 @@ class Background {
     fill(135, 206, 235);
     noStroke();
     rectMode(CORNER);
-    rect(0, 0, 800, 400);
+    rect(0, 0, width, height*0.5);
 
     //tree
     int t = 50;
@@ -40,10 +40,10 @@ class Background {
     //planet med måne i omkreds
     fill(100);
     pushMatrix();
-    translate(width-100, 50);
+    translate(width*0.875, height*0.0625);
     rotate(frameCount*0.1);
-    ellipse(0, 0, 40, 40);
-    ellipse(25, 25, 20, 20);
+    ellipse(0, 0, width*0.05, height*0.05);
+    ellipse(width*0.03125, height*0.03125, width*0.025, height*0.025);
     popMatrix();
 
     //bakken til vandfaldet
