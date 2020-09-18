@@ -24,7 +24,7 @@ class Menu {
     fill(0);
     textAlign(CENTER);
     textSize((height+width)*0.09);
-    text(titel, locTitel.x, locTitel.y+50, width*0.5, height*0.5);
+    text(titel, locTitel.x, locTitel.y, width*0.5, height*0.5);
   }
 
   void leave() {
