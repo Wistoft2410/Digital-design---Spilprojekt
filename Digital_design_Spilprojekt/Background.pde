@@ -7,9 +7,9 @@ class Background {
   Psystem ps;
 
   Background() {
-    vandloc = new PVector(-1, height/1.9);
-    soloc = new PVector (100, height/1.40);
-    ps = new Psystem(new PVector(60, 566), new PVector(width/2+50, height/2.68));
+    vandloc = new PVector(-width/width, height/1.9);
+    soloc = new PVector (width*0.125, height/1.40);
+    ps = new Psystem(new PVector(width*0.075, height*0.7075), new PVector(width/2+50, height/2.68));
   }
 
   void display() {
@@ -50,7 +50,7 @@ class Background {
     stroke(0);
     strokeWeight(0);
     fill(139, 69, 19, 200);
-    rect(vandloc.x+15, vandloc.y+74, 30, 150, 0, 100, 0, 0);  
+    rect(vandloc.x + width*0.01875, vandloc.y + height*0.0925, width*0.0375, height*0.1875);  
 
     //sø
     fill(35, 137, 255);
