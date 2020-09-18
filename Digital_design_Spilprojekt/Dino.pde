@@ -68,7 +68,7 @@ class Dino extends Default {
           // Vi skal huske at sørge for at ægget forsvinder og vi "incrementer" scoren!
           egg.setSwallow(true);
           gameSystem.incrementScore();
-          gameSystem.ding.play(1,0.5);
+          gameSystem.ding.play(1,0.07);
         }
 
       } else if (projectile instanceof Meteor) {
