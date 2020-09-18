@@ -9,7 +9,7 @@ class Background {
   Background() {
     vandloc = new PVector(-width/width, height/1.9);
     soloc = new PVector (width*0.125, height/1.40);
-    ps = new Psystem(new PVector(width*0.075, height*0.7075), new PVector(width/2+50, height/2.68));
+    ps = new Psystem(new PVector(width*0.075, height*0.7075), new PVector(width*0.5625, height/2.68));
   }
 
   void display() {
