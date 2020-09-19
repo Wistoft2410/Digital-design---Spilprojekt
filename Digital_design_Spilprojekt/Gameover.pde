@@ -17,6 +17,8 @@ class Gameover {
   void update() {
     background(0);
     text("Game Over", width/2, height/2);
+    textSize((height+width)*0.05);
+    text("Score: " + gameSystem.score, width/2, height*0.75);
     gameovertid.sek -= 0.0167;
     display();
     if (!lose.isPlaying()) lose.play();
