@@ -47,6 +47,3 @@ void game() {
   if (menu.startKnap.on) menu.update();
   else if (!menu.startKnap.on) gameSystem.run();
 }
-
-void mousePressed () {
-}
