@@ -17,7 +17,7 @@ class Gameover {
   void update() {
     background(0);
     text("Game Over", width/2, height/2);
-    gameover.gameovertid.sek -= 0.0167;
+    gameovertid.sek -= 0.0167;
     display();
     if (!lose.isPlaying()) lose.play();
   }

@@ -3,16 +3,13 @@ PrintWriter output;
 GameSystem gameSystem;
 Menu menu;
 
-Gameover gameover; 
-
 void setup() {
-  gameover = new Gameover(this);
   output = createWriter("highscore.xml"); 
   output.flush();
   output.close();
   frameRate(60);
   size(800, 800);
-  gameSystem = new GameSystem(this, this, this);
+  gameSystem = new GameSystem(this, this, this, this);
   menu = new Menu();     
   gameSystem.music.loop(1, 0.5);
 }
@@ -49,15 +46,6 @@ void restart () {
 void game() {
   if (menu.startKnap.on) menu.update();
   else if (!menu.startKnap.on) gameSystem.run();
-
-  if (gameSystem.gameOver()) {
-    if ( gameover.gameovertid.sek > 0 ) {
-      gameover.update();
-    } else {
-      gameSystem = new GameSystem(this, this, this);
-      menu.startKnap.on = true;
-    }
-  }
 }
 
 void mousePressed () {

@@ -15,6 +15,8 @@ class GameSystem {
   Background b;
   Psystem ps;
 
+  Gameover gameover; 
+
   SoundFile ding;
   SoundFile moan;
   SoundFile music;
@@ -28,7 +30,8 @@ class GameSystem {
   ArrayList<Tile> tiles;
   String[] savedScore;
 
-  GameSystem(PApplet ding_, PApplet moan_, PApplet music_) {
+  GameSystem(PApplet ding_, PApplet moan_, PApplet music_, PApplet gameover_) {
+    gameover = new Gameover(gameover_);
     b = new Background();
     ding = new SoundFile(ding_, "../Ressources/Ding.mp3");
     moan = new SoundFile(moan_, "../Ressources/Moan.wav");
@@ -45,8 +48,19 @@ class GameSystem {
     savedScore = loadStrings("highscore.xml");
   }
 
+
   void incrementScore() {
     score++;
+  }
+
+
+  void slutPrut () {
+    if ( gameOver() && gameover.gameovertid.sek > 0 ) {
+      gameover.update();
+    } else if (gameOver() && gameover.gameovertid.sek < 0) {
+      music.stop();
+      frameCount = -1;
+    }
   }
 
   void run() {
@@ -54,6 +68,8 @@ class GameSystem {
   }
 
   void update() {
+
+
     changeTime();
     b.display();
     heart.display();
@@ -118,7 +134,10 @@ class GameSystem {
         println("highscore " + hs);
       }
     }
+    
+     slutPrut();
   }
+
 
   boolean gameOver () {
     return dino.liv <= 0;
