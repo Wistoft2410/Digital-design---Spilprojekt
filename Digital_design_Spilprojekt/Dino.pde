@@ -107,17 +107,20 @@ class Dino extends Default {
       float botTile    = tile.loc.y + tile.sizeY*0.5;
       
       if (right > leftTile && bot > topTile && botTile > top && rightTile > left) {
+        
+        loc.y = topTile - sizeY*0.5;
+        
         // collision with right side of dino
         if (loc.x < tile.loc.x) {
-          loc.x = tile.loc.x - sizeX*0.5 - tile.sizeX*0.5;
+          //loc.x = tile.loc.x - sizeX*0.5 - tile.sizeX*0.5;
         
         // collision with left side of dino   
         } else if (loc.x > tile.loc.x) {
-          loc.x = tile.loc.x + sizeX*0.5 + tile.sizeX*0.5;
+          //loc.x = tile.loc.x + sizeX*0.5 + tile.sizeX*0.5;
           
         // collision with bottom of dino
         } else if (bot > topTile) {
-          loc.y = topTile - sizeY*0.5 - 1;
+          //loc.y = topTile - sizeY*0.5;
         }
       }
     }
