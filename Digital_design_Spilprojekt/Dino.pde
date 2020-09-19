@@ -108,6 +108,7 @@ class Dino extends Default {
       
       if (right > leftTile && bot > topTile && botTile > top && rightTile > left) {
         
+        touchGround = true;
         loc.y = topTile - sizeY*0.5;
         
         // collision with right side of dino
