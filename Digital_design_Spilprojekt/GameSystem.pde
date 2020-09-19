@@ -97,24 +97,22 @@ class GameSystem {
     }
 
     if (savedScore.length > 0) {
-        int latestScore = int (savedScore[0]); //Man kan ædnre strings
+      int latestScore = int (savedScore[0]); //Man kan ændre strings
 
-    String highscore = String.valueOf(score);
-    String[] list = split(highscore, ' ');
+      String highscore = String.valueOf(score);
+      String[] list = split(highscore, ' ');
 
-    if (latestScore < score) {
+      if (latestScore < score) {
+        saveStrings("highscore.xml", list);
+      }
 
-      saveStrings("highscore.xml", list);
+      list = reverse( sort(list));
+      hs = int(highscore);
+
+      if (hs <= score) { 
+        println("highscore " + hs);
+      }
     }
-
-    list = reverse( sort(list));
-    hs = int(highscore);
-
-    if (hs <= score) { 
-      println("highscore " + hs);
-    }
-    }
-
   }
 
   boolean gameOver () {
