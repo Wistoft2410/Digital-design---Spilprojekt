@@ -37,7 +37,7 @@ class Dino extends Default {
     vel = new PVector(0, 0);
     acc = new PVector(0, 0.3);
 
-    float scl = (height + width)/10;
+    float scl = (height + width)*0.07;
     sizeX = scl;
     sizeY = scl;
 

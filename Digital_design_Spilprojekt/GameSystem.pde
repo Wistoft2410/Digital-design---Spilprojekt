@@ -56,9 +56,9 @@ class GameSystem {
 
   void slutPrut () {
     if ( gameOver() && gameover.gameovertid.sek > 0 ) {
+      music.stop();
       gameover.update();
     } else if (gameOver() && gameover.gameovertid.sek < 0) {
-      music.stop();
       frameCount = -1;
     }
   }

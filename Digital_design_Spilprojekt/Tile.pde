@@ -7,9 +7,9 @@ class Tile extends Default {
   float sizeY;
 
   Tile() {
-    sizeX = 300.0 / 800.0 * width;
+    sizeX = 175.0 / 800.0 * width;
     sizeY = 5.0 / 800.0 * height;
-    loc = new PVector( width + sizeX/2, placering( height * 0.8, height ) );
+    loc = new PVector( width + sizeX/2, placering( height * 0.9, height * 0.95 ) );
     vel = new PVector(0.5, 0);
   }
 
