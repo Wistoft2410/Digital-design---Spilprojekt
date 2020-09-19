@@ -82,8 +82,13 @@ class GameSystem {
       projectile.run();
     }
 
-    total = tiles.size();
-    if (total < 2) {
+    // Hvis der ikke er nogle tiles
+    // Eller
+    // Hvis den seneste tile kommer helt ind på banen
+    // så bliver der lavet en nu tile
+    if (tiles.size() <= 0) {
+      tiles.add(new Tile());
+    } else if (tiles.get(tiles.size()-1).loc.x + tiles.get(tiles.size()-1).sizeX/2 < width) {
       tiles.add(new Tile());
     }
 

@@ -59,3 +59,6 @@ void game() {
     }
   }
 }
+
+void mousePressed () {
+}
