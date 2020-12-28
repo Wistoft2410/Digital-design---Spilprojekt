@@ -1,4 +1,4 @@
-# Digital design - Spilprojekt - Dino - TEST
+# Digital design - Spilprojekt - Dino
 
 ## Fag: Digital Design
 ## Gruppe: Anders, Simon og Marcus Hansen fra L 3d2 og Adam fra L 3i
